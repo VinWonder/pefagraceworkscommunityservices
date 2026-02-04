@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - {{ site_name }}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8">
+                <h1 class="hero-title">About {{ site_name }}</h1>
+                <p class="hero-subtitle">Empowered by Faith, Serving with Grace</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mission & Vision -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <h2 class="section-title mb-4">Our Mission</h2>
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-bullseye fa-3x text-primary"></i>
+                        </div>
+                        <p class="lead text-center">
+                            To transform communities through holistic, faith-based initiatives that address
+                            physical, emotional, and spiritual needs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="section-title mb-4">Our Vision</h2>
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-eye fa-3x text-secondary"></i>
+                        </div>
+                        <p class="lead text-center">
+                            To see communities thrive in unity, hope, and self-sustainability,
+                            empowered by the love and grace of God.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Story -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <h2 class="section-title mb-4">Our Story</h2>
+                <p>
+                    Founded on the principles of faith and compassion, {{ site_name }} began as a small
+                    community initiative with a big heart. What started as a local outreach program
+                    has grown into a comprehensive community service organization.
+                </p>
+                <p>
+                    Over the years, we have expanded our services to include health programs,
+                    education support, food distribution, and spiritual guidance. Our journey is
+                    marked by countless lives transformed, communities strengthened, and hope
+                    restored.
+                </p>
+                <p>
+                    Today, we continue to serve with the same passion and dedication, guided by
+                    our core values of faith, integrity, compassion, and excellence.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <img src="{% static 'images/about-story.jpg' %}" alt="Our Story" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Values -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">Our Core Values</h2>
+        <div class="row">
+            <div class="col-md-3 col-6 mb-4">
+                <div class="text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-pray fa-3x text-primary"></i>
+                    </div>
+                    <h5>Faith</h5>
+                    <p class="small">Rooted in Christian principles</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-heart fa-3x text-secondary"></i>
+                    </div>
+                    <h5>Compassion</h5>
+                    <p class="small">Serving with love and empathy</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-handshake fa-3x text-primary"></i>
+                    </div>
+                    <h5>Integrity</h5>
+                    <p class="small">Transparent and accountable</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-users fa-3x text-secondary"></i>
+                    </div>
+                    <h5>Community</h5>
+                    <p class="small">Building together</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Leadership Team -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">Our Leadership</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div class="rounded-circle bg-primary d-inline-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                                <i class="fas fa-user fa-3x text-white"></i>
+                            </div>
+                        </div>
+                        <h5>Pastor John Mwangi</h5>
+                        <p class="text-muted small">Founder & Director</p>
+                        <p class="small">Leading with vision and spiritual guidance for over 15 years.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div class="rounded-circle bg-secondary d-inline-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                                <i class="fas fa-user fa-3x text-white"></i>
+                            </div>
+                        </div>
+                        <h5>Dr. Sarah Wanjiku</h5>
+                        <p class="text-muted small">Medical Director</p>
+                        <p class="small">Oversees all health and wellness programs with expertise.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div class="rounded-circle bg-primary d-inline-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                                <i class="fas fa-user fa-3x text-white"></i>
+                            </div>
+                        </div>
+                        <h5>James Omondi</h5>
+                        <p class="text-muted small">Programs Coordinator</p>
+                        <p class="small">Manages community development and outreach initiatives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="mb-3">Join Our Mission</h2>
+                <p class="mb-0">Become part of our story and help transform more lives.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{% url 'donations:donate' %}" class="btn btn-light btn-lg me-3">
+                    <i class="fas fa-hand-holding-heart me-2"></i>Support Us
+                </a>
+                <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-envelope me-2"></i>Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

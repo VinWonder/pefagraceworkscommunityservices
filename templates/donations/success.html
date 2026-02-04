@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Donation Successful - {{ site_name }}{% endblock %}
+
+{% block content %}
+<!-- Success Message -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body p-5">
+                        <div class="mb-4">
+                            <div class="bg-success rounded-circle d-inline-flex align-items-center justify-content-center"
+                                 style="width: 120px; height: 120px;">
+                                <i class="fas fa-heart fa-3x text-white"></i>
+                            </div>
+                        </div>
+
+                        <h1 class="display-5 mb-3">Thank You for Your Generosity!</h1>
+
+                        <p class="lead mb-4">
+                            Your donation has been received and will make a real difference in our community.
+                        </p>
+
+                        <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading">
+                                <i class="fas fa-check-circle me-2"></i>
+                                Donation Successful!
+                            </h4>
+                            <p class="mb-0">
+                                A confirmation email has been sent to your email address with receipt details.
+                            </p>
+                        </div>
+
+                        <!-- Donation Summary -->
+                        <div class="card border-0 bg-light mt-4 mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Donation Summary</h5>
+                                <div class="row text-start">
+                                    <div class="col-md-6 mb-3">
+                                        <strong>Transaction ID:</strong>
+                                        <div class="text-muted">TXN-{{ "now"|date:"YmdHis" }}</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <strong>Date & Time:</strong>
+                                        <div class="text-muted">{% now "F j, Y, g:i a" %}</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <strong>Payment Method:</strong>
+                                        <div class="text-muted">M-Pesa</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <strong>Status:</strong>
+                                        <span class="badge bg-success">Completed</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Next Steps -->
+                        <div class="row mt-5">
+                            <div class="col-md-4 mb-4">
+                                <div class="card border-0 h-100">
+                                    <div class="card-body">
+                                        <i class="fas fa-envelope fa-2x text-primary mb-3"></i>
+                                        <h5>Check Your Email</h5>
+                                        <p class="small">Look for a confirmation email with your donation receipt.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-4">
+                                <div class="card border-0 h-100">
+                                    <div class="card-body">
+                                        <i class="fas fa-receipt fa-2x text-secondary mb-3"></i>
+                                        <h5>Save Your Receipt</h5>
+                                        <p class="small">Keep the receipt for your records and tax purposes.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-4">
+                                <div class="card border-0 h-100">
+                                    <div class="card-body">
+                                        <i class="fas fa-share-alt fa-2x text-primary mb-3"></i>
+                                        <h5>Spread the Word</h5>
+                                        <p class="small">Tell others about our mission and encourage them to donate.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center gap-3 mt-4">
+                            <a href="{% url 'home' %}" class="btn btn-primary">
+                                <i class="fas fa-home me-2"></i>Back to Home
+                            </a>
+                            <a href="{% url 'donations:donate' %}" class="btn btn-outline-primary">
+                                <i class="fas fa-donate me-2"></i>Make Another Donation
+                            </a>
+                            <a href="#" class="btn btn-success" onclick="window.print()">
+                                <i class="fas fa-print me-2"></i>Print Receipt
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Impact Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">See Your Impact</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="text-center">
+                    <div class="display-4 text-primary mb-2">1</div>
+                    <h5>Child Fed</h5>
+                    <p class="small">Your donation provides nutritious meals for children in need.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="text-center">
+                    <div class="display-4 text-secondary mb-2">1</div>
+                    <h5>Family Helped</h5>
+                    <p class="small">Your support reaches entire families through our programs.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="text-center">
+                    <div class="display-4 text-primary mb-2">1</div>
+                    <h5>Community Strengthened</h5>
+                    <p class="small">Together we build stronger, healthier communities.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <p class="lead">
+                <i class="fas fa-quote-left text-muted me-2"></i>
+                Every donation, no matter the size, makes a difference.
+                <i class="fas fa-quote-right text-muted ms-2"></i>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Stay Connected -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="mb-3">Stay Connected</h2>
+                <p class="mb-0">Follow our journey and see how your donation is making a difference.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <div class="d-flex justify-content-center justify-content-lg-end gap-3">
+                    {% if facebook_url %}
+                    <a href="{{ facebook_url }}" target="_blank" class="btn btn-outline-primary">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    {% endif %}
+                    {% if twitter_url %}
+                    <a href="{{ twitter_url }}" target="_blank" class="btn btn-outline-primary">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    {% endif %}
+                    {% if instagram_url %}
+                    <a href="{{ instagram_url }}" target="_blank" class="btn btn-outline-primary">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    {% endif %}
+                    {% if youtube_url %}
+                    <a href="{{ youtube_url }}" target="_blank" class="btn btn-outline-danger">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

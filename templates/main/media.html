@@ -1,0 +1,583 @@
+<!-- templates/main/media.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Media & Gallery - {{ site_name }}{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Body padding for fixed header */
+    body {
+        padding-top: 80px;
+    }
+
+    /* Hero section adjustments */
+    .hero-section {
+        margin-top: -80px;
+        padding-top: 140px;
+        min-height: 40vh;
+        position: relative;
+        background: url('{% static 'images/' %}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .hero-content {
+        background-color: rgba(26, 82, 118, 0.85);
+        border-radius: 8px;
+        padding: 30px;
+    }
+
+    /* Gallery item styling */
+    .gallery-item {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        height: 250px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.05);
+    }
+
+    .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+    }
+
+    .gallery-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,0.8);
+        color: white;
+        padding: 10px 15px;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-caption {
+        transform: translateY(0);
+    }
+
+    /* Video thumbnail styling */
+    .video-thumbnail {
+        position: relative;
+        cursor: pointer;
+    }
+
+    .video-play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(231, 76, 60, 0.9);
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        border: none;
+        z-index: 2;
+    }
+
+    .video-play-btn:hover {
+        background: rgba(231, 76, 60, 1);
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    /* Tabs styling */
+    .nav-tabs .nav-link {
+        border: none;
+        color: #7f8c8d;
+        font-weight: 600;
+        padding: 12px 24px;
+        margin: 0 5px;
+    }
+
+    .nav-tabs .nav-link.active {
+        color: #1a5276;
+        border-bottom: 3px solid #1a5276;
+        background: transparent;
+    }
+
+    .nav-tabs .nav-link:hover {
+        color: #1a5276;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        body {
+            padding-top: 70px;
+        }
+
+        .hero-section {
+            margin-top: -70px;
+            padding-top: 120px;
+            min-height: 30vh;
+        }
+
+        .gallery-item {
+            height: 200px;
+        }
+
+        .nav-tabs .nav-link {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        body {
+            padding-top: 60px;
+        }
+
+        .hero-section {
+            margin-top: -60px;
+            padding-top: 100px;
+        }
+
+        .nav-tabs .nav-link {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container" style="height: 100%;">
+        <div class="row align-items-center" style="height: 100%; min-height: 200px;">
+            <div class="col-md-8 mx-auto text-center">
+                <div class="hero-content">
+                    <h1 class="mb-3" style="color: white; font-size: 3rem; font-weight: 700;">
+                        OUR GALLERY
+                    </h1>
+                    <div class="mb-4">
+                        <div style="width: 100px; height: 4px; background: #e74c3c; margin: 0 auto;"></div>
+                    </div>
+                    <p style="color: #ffffff; font-size: 1.2rem; line-height: 1.6;">
+                        Capturing moments of impact, transformation, and community service
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Tabs -->
+<section class="py-5">
+    <div class="container">
+        <ul class="nav nav-tabs justify-content-center mb-4" id="mediaTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="photos-tab" data-bs-toggle="tab" data-bs-target="#photos" type="button">
+                    <i class="fas fa-images me-2"></i>PHOTOS
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="videos-tab" data-bs-toggle="tab" data-bs-target="#videos" type="button">
+                    <i class="fas fa-video me-2"></i>VIDEOS
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="mediaTabsContent">
+            <!-- PHOTOS TAB -->
+            <div class="tab-pane fade show active" id="photos" role="tabpanel">
+                <div class="row">
+                    <!-- Photo 1 -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="gallery-item">
+                            <img src="{% static 'images/img_2.png' %}"
+                                 alt="Community Outreach"
+                                 class="img-fluid">
+                            <div class="gallery-overlay">
+                                <button class="btn btn-light" onclick="viewStaticImage('{% static 'images/gallery-1.jpg' %}', 'Community Outreach')">
+                                    <i class="fas fa-search-plus fa-2x"></i>
+                                </button>
+                            </div>
+                            <div class="gallery-caption">
+                                <h6 class="mb-0">Community Outreach</h6>
+                                <small>Helping vulnerable populations</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Photo 2 -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="gallery-item">
+                            <img src="{% static 'images/water1.png' %}"
+                                 alt="Health Camp"
+                                 class="img-fluid">
+                            <div class="gallery-overlay">
+                                <button class="btn btn-light" onclick="viewStaticImage('{% static 'images/gallery-2.jpg' %}', 'Health Camp')">
+                                    <i class="fas fa-search-plus fa-2x"></i>
+                                </button>
+                            </div>
+                            <div class="gallery-caption">
+                                <h6 class="mb-0">Health Camp</h6>
+                                <small>Free medical services</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Photo 3 -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="gallery-item">
+                            <img src="{% static 'images/school.jpg' %}"
+                                 alt="Water Project"
+                                 class="img-fluid">
+                            <div class="gallery-overlay">
+                                <button class="btn btn-light" onclick="viewStaticImage('{% static 'images/gallery-3.jpg' %}', 'Water Project')">
+                                    <i class="fas fa-search-plus fa-2x"></i>
+                                </button>
+                            </div>
+                            <div class="gallery-caption">
+                                <h6 class="mb-0">Water Project</h6>
+                                <small>Clean water borehole drilling</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Photo 4 -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="gallery-item">
+                            <img src="{% static 'images/mzungu.jpeg' %}"
+                                 alt="Education Support"
+                                 class="img-fluid">
+                            <div class="gallery-overlay">
+                                <button class="btn btn-light" onclick="viewStaticImage('{% static 'images/gallery-4.jpg' %}', 'Education Support')">
+                                    <i class="fas fa-search-plus fa-2x"></i>
+                                </button>
+                            </div>
+                            <div class="gallery-caption">
+                                <h6 class="mb-0">Education Support</h6>
+                                <small>Scholarship distribution</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Photo 5 -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="gallery-item">
+                            <img src="{% static 'images/faith1.jpeg' %}"
+                                 alt="Faith Outreach"
+                                 class="img-fluid">
+                            <div class="gallery-overlay">
+                                <button class="btn btn-light" onclick="viewStaticImage('{% static 'images/gallery-5.jpg' %}', 'Faith Outreach')">
+                                    <i class="fas fa-search-plus fa-2x"></i>
+                                </button>
+                            </div>
+                            <div class="gallery-caption">
+                                <h6 class="mb-0">Faith Outreach</h6>
+                                <small>Prison ministry program</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Photo 6 -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="gallery-item">
+                            <img src="{% static 'images/bap.jpeg' %}"
+                                 alt="Community Training"
+                                 class="img-fluid">
+                            <div class="gallery-overlay">
+                                <button class="btn btn-light" onclick="viewStaticImage('{% static 'images/gallery-6.jpg' %}', 'Community Training')">
+                                    <i class="fas fa-search-plus fa-2x"></i>
+                                </button>
+                            </div>
+                            <div class="gallery-caption">
+                                <h6 class="mb-0">Community Training</h6>
+                                <small>Skills development workshop</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEOS TAB -->
+            <div class="tab-pane fade" id="videos" role="tabpanel">
+                <div class="row">
+                    <!-- Video 1 -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="gallery-item video-thumbnail">
+
+                            <button class="video-play-btn" onclick="playStaticVideo('{% static 'mzungu.mp4' %}', 'Our Impact 2023', 'Watch our annual impact review')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="gallery-caption">
+                                <h6 class="mb-0">Our Impact 2023</h6>
+                                <small>Annual community impact review</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="gallery-item video-thumbnail">
+                            <img src="{% static 'images/video-thumb-2.jpg' %}"
+                                 alt="Medical Camp Highlights"
+                                 class="img-fluid">
+                            <button class="video-play-btn" onclick="playStaticVideo('{% static 'videos/medical-camp-highlights.mp4' %}', 'Medical Camp Highlights', 'Highlights from our free medical camp')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="gallery-caption">
+                                <h6 class="mb-0">Medical Camp Highlights</h6>
+                                <small>Free medical services in rural areas</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 3 -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="gallery-item video-thumbnail">
+                            <img src="{% static 'images/video-thumb-3.jpg' %}"
+                                 alt="Education Program Launch"
+                                 class="img-fluid">
+                            <button class="video-play-btn" onclick="playStaticVideo('{% static 'videos/education-launch.mp4' %}', 'Education Program Launch', 'Launching our scholarship program')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="gallery-caption">
+                                <h6 class="mb-0">Education Program Launch</h6>
+                                <small>Scholarship program launch event</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 4 -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="gallery-item video-thumbnail">
+                            <img src="{% static 'images/video-thumb-4.jpg' %}"
+                                 alt="Water Project Documentary"
+                                 class="img-fluid">
+                            <button class="video-play-btn" onclick="playStaticVideo('{% static 'videos/water-project.mp4' %}', 'Water Project Documentary', 'Bringing clean water to remote communities')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="gallery-caption">
+                                <h6 class="mb-0">Water Project Documentary</h6>
+                                <small>Clean water project journey</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 5 - YouTube -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="gallery-item video-thumbnail">
+                            <img src="{% static 'images/video-placeholder.jpg' %}"
+                                 alt="Community Outreach Video"
+                                 class="img-fluid">
+                            <button class="video-play-btn" onclick="playYouTubeVideo('dQw4w9WgXcQ', 'Community Outreach', 'Our community outreach activities')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="gallery-caption">
+                                <h6 class="mb-0">Community Outreach</h6>
+                                <small>YouTube: Outreach activities</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 6 - YouTube -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="gallery-item video-thumbnail">
+                            <img src="{% static 'images/video-placeholder.jpg' %}"
+                                 alt="Success Stories"
+                                 class="img-fluid">
+                            <button class="video-play-btn" onclick="playYouTubeVideo('9bZkp7q19f0', 'Success Stories', 'Hear from community members')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="gallery-caption">
+                                <h6 class="mb-0">Success Stories</h6>
+                                <small>YouTube: Testimonials from community</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalTitle">Gallery Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" class="img-fluid rounded" alt="">
+                <div id="modalCaption" class="mt-3 text-muted"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Video Modal -->
+<div class="modal fade" id="videoModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="videoModalTitle">Video</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="stopVideo()"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="ratio ratio-16x9" id="videoContainer">
+                    <!-- Video will be inserted here by JavaScript -->
+                </div>
+                <div id="videoInfo" class="mt-3">
+                    <h6 id="videoTitle"></h6>
+                    <p id="videoDescription" class="text-muted small"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// View static image in modal
+function viewStaticImage(imageUrl, title) {
+    const modalImage = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    const modalTitle = document.getElementById('imageModalTitle');
+
+    modalImage.src = imageUrl;
+    modalTitle.textContent = title;
+    modalCaption.textContent = title + ' - PEFA GraceWorks Community Services';
+
+    const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+    modal.show();
+}
+
+// Play static video from videos folder
+function playStaticVideo(videoUrl, title, description) {
+    const videoContainer = document.getElementById('videoContainer');
+    const videoTitle = document.getElementById('videoTitle');
+    const videoDescription = document.getElementById('videoDescription');
+    const modalTitle = document.getElementById('videoModalTitle');
+
+    // Create HTML5 video player
+    videoContainer.innerHTML = `
+        <video controls autoplay style="width: 100%; height: 100%;">
+            <source src="${videoUrl}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    `;
+
+    modalTitle.textContent = title;
+    videoTitle.textContent = title;
+    videoDescription.textContent = description;
+
+    const modal = new bootstrap.Modal(document.getElementById('videoModal'));
+    modal.show();
+}
+
+// Play YouTube video
+function playYouTubeVideo(youtubeId, title, description) {
+    const videoContainer = document.getElementById('videoContainer');
+    const videoTitle = document.getElementById('videoTitle');
+    const videoDescription = document.getElementById('videoDescription');
+    const modalTitle = document.getElementById('videoModalTitle');
+
+    // Create YouTube iframe
+    videoContainer.innerHTML = `
+        <iframe src="https://www.youtube.com/embed/${youtubeId}?autoplay=1"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+    `;
+
+    modalTitle.textContent = title;
+    videoTitle.textContent = title;
+    videoDescription.textContent = description;
+
+    const modal = new bootstrap.Modal(document.getElementById('videoModal'));
+    modal.show();
+}
+
+// Stop video when modal is closed
+function stopVideo() {
+    const videoContainer = document.getElementById('videoContainer');
+    const videoPlayer = videoContainer.querySelector('video');
+    const iframePlayer = videoContainer.querySelector('iframe');
+
+    if (videoPlayer) {
+        videoPlayer.pause();
+        videoPlayer.currentTime = 0;
+    }
+
+    if (iframePlayer) {
+        // For YouTube iframe, we need to replace src to stop
+        iframePlayer.src = iframePlayer.src.replace('autoplay=1', 'autoplay=0');
+    }
+}
+
+// Close video modal when clicking outside
+document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
+    stopVideo();
+});
+
+// Tab change animation
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('[data-bs-toggle="tab"]');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('shown.bs.tab', function (event) {
+            const targetId = event.target.getAttribute('data-bs-target');
+            const targetContent = document.querySelector(targetId);
+
+            targetContent.classList.add('animate__animated', 'animate__fadeIn');
+            setTimeout(() => {
+                targetContent.classList.remove('animate__animated', 'animate__fadeIn');
+            }, 500);
+        });
+    });
+
+    // Fix header to be sticky
+    const header = document.querySelector('header');
+    if (header) {
+        header.style.position = 'fixed';
+        header.style.top = '0';
+        header.style.left = '0';
+        header.style.right = '0';
+        header.style.width = '100%';
+        header.style.zIndex = '1030';
+    }
+});
+</script>
+
+<!-- Add animate.css for tab animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+{% endblock %}

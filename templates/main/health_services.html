@@ -1,0 +1,520 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Health Services - {{ site_name }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="vc_section vc_custom_1670773642248 vc_section-has-fill"
+         style="position: relative; background: url('{% static 'images/maisha.jpeg' %}');
+                background-size: cover; background-position: center; background-repeat: no-repeat; padding: 60px 0; margin: 0; min-height: 60vh;">
+    <div class="container" style="height: 100%;">
+        <div class="row align-items-center" style="height: 100%;">
+            <!-- Left column (empty for spacing) -->
+            <div class="col-md-6"></div>
+
+            <!-- Right column with content -->
+            <div class="col-md-6 vc_col-has-fill">
+                <div class="vc_column-inner" style="padding: 30px; background-color: rgba(46, 204, 113, 0.8); border-radius: 8px;">
+                    <h2 style="color: #ffffff; text-align: left; font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;"
+                        class="vc_custom_heading">
+                        Health Services
+                    </h2>
+
+                    <div class="wpb_single_image wpb_content_element vc_align_left">
+                        <figure class="wpb_wrapper vc_figure">
+                            <div class="vc_single_image-wrapper">
+                                <div style="width: 80px; height: 4px; background: #ffffff; margin: 0;"></div>
+                            </div>
+                        </figure>
+                    </div>
+
+                    <p style="color: #ffffff; font-size: 1.1rem; margin-top: 25px; line-height: 1.6;">
+                        Promoting wellness and providing essential healthcare services to build healthier communities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quote Section -->
+<section class="py-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-3">
+                    <!-- Main quote -->
+                    <h3 class="mb-2" style="color: #2ecc71; font-size: 1.4rem; font-weight: 600; line-height: 1.3;">
+                        "Health is a state of complete physical, mental and social well-being."
+                    </h3>
+
+                    <!-- Divider line -->
+                    <div style="width: 60px; height: 2px; background: #2ecc71; margin: 10px auto 15px;"></div>
+                </div>
+
+                <!-- Combined content -->
+                <div style="font-size: 0.95rem; line-height: 1.6; color: #333; text-align: center;">
+                    <p class="mb-3">
+                        Our health services program is dedicated to improving community health through preventive care,
+                        medical treatment, health education, and wellness programs. We believe that access to quality
+                        healthcare is a fundamental right for all individuals.
+                    </p>
+
+                    <p style="font-weight: 500; color: #2ecc71;">
+                        Since 2018, we have provided health services to over 10,000 individuals across multiple communities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Content Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <h2 class="section-title mb-4" style="color: #2ecc71; font-weight: 700;">Comprehensive Healthcare Approach</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                    We take a holistic approach to healthcare, addressing not just physical ailments but also
+                    preventive care, mental health, nutrition, and health education. Our services range from
+                    basic medical check-ups to specialized care for vulnerable populations.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                    Through mobile clinics, community health centers, and partnerships with local healthcare
+                    providers, we ensure that even the most remote communities have access to essential
+                    medical services. Our focus is on preventive care to reduce the burden of disease.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    In 2023 alone, we conducted 50+ medical camps, screened 3,000+ patients for chronic diseases,
+                    and provided vaccinations to 1,500+ children and adults.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <div style="width: 100%; height: 400px; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <img src="{% static 'images/maisha.jpeg' %}"
+                         alt="Health Services"
+                         class="img-fluid"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Health Programs Slideshow Section -->
+<section class="py-5" style="background: #f8f9fa;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div id="healthProgramsCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <!-- Indicators -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#healthProgramsCarousel" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#healthProgramsCarousel" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#healthProgramsCarousel" data-bs-slide-to="2"></button>
+                        <button type="button" data-bs-target="#healthProgramsCarousel" data-bs-slide-to="3"></button>
+                    </div>
+
+                    <!-- Slides -->
+                    <div class="carousel-inner rounded" style="border-radius: 10px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <!-- Slide 1 - Medical Care -->
+                        <div class="carousel-item active">
+                            <div class="row align-items-center g-0" style="background: linear-gradient(to right, #ffffff 50%, #e8f8f0 50%);">
+                                <div class="col-md-6 p-4 p-lg-5">
+                                    <div class="mb-3">
+                                        <span style="background: #2ecc71; color: white; padding: 8px 20px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
+                                            MEDICAL
+                                        </span>
+                                    </div>
+                                    <h3 class="mb-3" style="color: #2ecc71; font-weight: 700; font-size: 1.8rem;">
+                                        Primary Healthcare
+                                    </h3>
+                                    <div class="mb-3">
+                                        <span style="background: #e74c3c; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; margin-right: 10px;">
+                                            CLINICS
+                                        </span>
+                                        <span style="background: #3498db; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem;">
+                                            TREATMENT
+                                        </span>
+                                    </div>
+                                    <p style="color: #333; line-height: 1.7;">
+                                        Basic medical consultations, diagnosis, treatment for common illnesses, and referrals to specialized care when needed.
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div style="height: 400px; overflow: hidden;">
+                                        <img src="{% static 'images/medicalcare.jpeg' %}"
+                                             class="d-block w-100 h-100"
+                                             alt="Primary Healthcare"
+                                             style="object-fit: cover;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 - Maternal & Child -->
+                        <div class="carousel-item">
+                            <div class="row align-items-center g-0" style="background: linear-gradient(to right, #e8f8f0 50%, #ffffff 50%);">
+                                <div class="col-md-6 order-md-2 p-4 p-lg-5">
+                                    <div class="mb-3">
+                                        <span style="background: #2ecc71; color: white; padding: 8px 20px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
+                                            MATERNAL
+                                        </span>
+                                    </div>
+                                    <h3 class="mb-3" style="color: #2ecc71; font-weight: 700; font-size: 1.8rem;">
+                                        Maternal & Child Health
+                                    </h3>
+                                    <div class="mb-3">
+                                        <span style="background: #e74c3c; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; margin-right: 10px;">
+                                            PRENATAL
+                                        </span>
+                                        <span style="background: #3498db; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem;">
+                                            PEDIATRIC
+                                        </span>
+                                    </div>
+                                    <p style="color: #333; line-height: 1.7;">
+                                        Prenatal care, safe delivery support, postnatal check-ups, child immunization, and nutritional counseling for mothers and children.
+                                    </p>
+                                </div>
+                                <div class="col-md-6 order-md-1">
+                                    <div style="height: 400px; overflow: hidden;">
+                                        <img src="{% static 'images/maternal.jpeg' %}"
+                                             class="d-block w-100 h-100"
+                                             alt="Maternal & Child Health"
+                                             style="object-fit: cover;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 - Health Education -->
+                        <div class="carousel-item">
+                            <div class="row align-items-center g-0" style="background: linear-gradient(to right, #ffffff 50%, #e8f8f0 50%);">
+                                <div class="col-md-6 p-4 p-lg-5">
+                                    <div class="mb-3">
+                                        <span style="background: #2ecc71; color: white; padding: 8px 20px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
+                                            EDUCATION
+                                        </span>
+                                    </div>
+                                    <h3 class="mb-3" style="color: #2ecc71; font-weight: 700; font-size: 1.8rem;">
+                                        Health Education
+                                    </h3>
+                                    <div class="mb-3">
+                                        <span style="background: #e74c3c; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; margin-right: 10px;">
+                                            PREVENTION
+                                        </span>
+                                        <span style="background: #3498db; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem;">
+                                            AWARENESS
+                                        </span>
+                                    </div>
+                                    <p style="color: #333; line-height: 1.7;">
+                                        Workshops on disease prevention, hygiene practices, nutrition, sexual and reproductive health, and mental health awareness.
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div style="height: 400px; overflow: hidden;">
+                                        <img src="{% static 'images/healtheducation.jpeg' %}"
+                                             class="d-block w-100 h-100"
+                                             alt="Health Education"
+                                             style="object-fit: cover;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 - Chronic Disease -->
+                        <div class="carousel-item">
+                            <div class="row align-items-center g-0" style="background: linear-gradient(to right, #e8f8f0 50%, #ffffff 50%);">
+                                <div class="col-md-6 order-md-2 p-4 p-lg-5">
+                                    <div class="mb-3">
+                                        <span style="background: #2ecc71; color: white; padding: 8px 20px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
+                                            CHRONIC
+                                        </span>
+                                    </div>
+                                    <h3 class="mb-3" style="color: #2ecc71; font-weight: 700; font-size: 1.8rem;">
+                                        Chronic Disease Management
+                                    </h3>
+                                    <div class="mb-3">
+                                        <span style="background: #e74c3c; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; margin-right: 10px;">
+                                            SCREENING
+                                        </span>
+                                        <span style="background: #3498db; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem;">
+                                            MANAGEMENT
+                                        </span>
+                                    </div>
+                                    <p style="color: #333; line-height: 1.7;">
+                                        Screening for diabetes, hypertension, HIV/AIDS, and other chronic conditions with ongoing management and support programs.
+                                    </p>
+                                </div>
+                                <div class="col-md-6 order-md-1">
+                                    <div style="height: 400px; overflow: hidden;">
+                                        <img src="{% static 'images/chronic.jpeg' %}"
+                                             class="d-block w-100 h-100"
+                                             alt="Chronic Disease Management"
+                                             style="object-fit: cover;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#healthProgramsCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#healthProgramsCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Impact Statistics -->
+<section class="py-5" style="background: #2c3e50; color: white;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="text-center">
+                    <h2 class="mb-5" style="color: white;">Our Health Impact</h2>
+                    <div class="row">
+                        <div class="col-md-3 col-6 mb-4">
+                            <div class="display-4" style="color: #2ecc71; font-weight: 700;">50+</div>
+                            <div>Medical Camps</div>
+                        </div>
+                        <div class="col-md-3 col-6 mb-4">
+                            <div class="display-4" style="color: #e74c3c; font-weight: 700;">3,000+</div>
+                            <div>Patients Screened</div>
+                        </div>
+                        <div class="col-md-3 col-6 mb-4">
+                            <div class="display-4" style="color: #3498db; font-weight: 700;">1,500+</div>
+                            <div>Vaccinations</div>
+                        </div>
+                        <div class="col-md-3 col-6 mb-4">
+                            <div class="display-4" style="color: #2ecc71; font-weight: 700;">10,000+</div>
+                            <div>Individuals Served</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Offered -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title" style="color: #2ecc71;">Our Health Services</h2>
+            <p class="lead">Comprehensive healthcare solutions for the community</p>
+        </div>
+
+        <div class="row">
+            <!-- Medical Consultations -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center p-4 h-100" style="background: #f8f9fa; border-radius: 8px;">
+                    <div class="step-number mb-4">
+                        <span style="background: #2ecc71; color: white; width: 60px; height: 60px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700;">
+                            <i class="fas fa-stethoscope"></i>
+                        </span>
+                    </div>
+                    <h5 style="color: #2ecc71; margin-bottom: 15px;">Medical Consultations</h5>
+                    <p>General medical check-ups and treatment for common illnesses</p>
+                </div>
+            </div>
+
+            <!-- Immunization -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center p-4 h-100" style="background: #f8f9fa; border-radius: 8px;">
+                    <div class="step-number mb-4">
+                        <span style="background: #e74c3c; color: white; width: 60px; height: 60px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700;">
+                            <i class="fas fa-syringe"></i>
+                        </span>
+                    </div>
+                    <h5 style="color: #e74c3c; margin-bottom: 15px;">Immunization</h5>
+                    <p>Vaccination programs for children and adults against preventable diseases</p>
+                </div>
+            </div>
+
+            <!-- Maternal Care -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center p-4 h-100" style="background: #f8f9fa; border-radius: 8px;">
+                    <div class="step-number mb-4">
+                        <span style="background: #3498db; color: white; width: 60px; height: 60px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700;">
+                            <i class="fas fa-baby"></i>
+                        </span>
+                    </div>
+                    <h5 style="color: #3498db; margin-bottom: 15px;">Maternal Care</h5>
+                    <p>Prenatal, delivery, and postnatal care for mothers and newborns</p>
+                </div>
+            </div>
+
+            <!-- Health Education -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center p-4 h-100" style="background: #f8f9fa; border-radius: 8px;">
+                    <div class="step-number mb-4">
+                        <span style="background: #2ecc71; color: white; width: 60px; height: 60px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700;">
+                            <i class="fas fa-book-medical"></i>
+                        </span>
+                    </div>
+                    <h5 style="color: #2ecc71; margin-bottom: 15px;">Health Education</h5>
+                    <p>Workshops and training on disease prevention and healthy living</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5" style="background: #2ecc71; color: white;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="mb-3" style="color: white;">Support Community Health</h2>
+                <p class="mb-0" style="font-size: 1.1rem;">
+                    Help us provide essential healthcare services to underserved communities and build a healthier future for all.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{% url 'donations:donate' %}" class="btn btn-light btn-lg" style="background: white; color: #2ecc71; font-weight: 600;">
+                    <i class="fas fa-heartbeat me-2"></i>Support Health Services
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Add custom styles for slideshow -->
+<style>
+    /* Carousel customization */
+    .carousel-indicators button {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: rgba(46, 204, 113, 0.5);
+        border: none;
+        margin: 0 5px;
+    }
+
+    .carousel-indicators button.active {
+        background-color: #2ecc71;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(46, 204, 113, 0.8);
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0 20px;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .section-title {
+        color: #2ecc71;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+    }
+
+    .section-title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background-color: #2ecc71;
+    }
+
+    .step-number span {
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .display-4 {
+        font-size: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .carousel-inner .row {
+            flex-direction: column;
+        }
+
+        .carousel-inner .col-md-6 {
+            width: 100%;
+        }
+
+        .carousel-inner .col-md-6:last-child {
+            order: -1;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            display: none;
+        }
+
+        .vc_custom_heading {
+            font-size: 2rem !important;
+        }
+
+        .display-4 {
+            font-size: 1.8rem;
+        }
+    }
+</style>
+
+<!-- Add this JavaScript to ensure header stays on top -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Force header to top
+        const header = document.querySelector('header');
+        if (header) {
+            header.style.position = 'fixed';
+            header.style.top = '0';
+            header.style.left = '0';
+            header.style.right = '0';
+            header.style.width = '100%';
+            header.style.zIndex = '1030';
+            header.style.backgroundColor = 'white';
+            header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            header.style.margin = '0';
+
+            // Add body padding to account for fixed header
+            const headerHeight = header.offsetHeight;
+            document.body.style.paddingTop = headerHeight + 'px';
+        }
+
+        // Initialize carousel if Bootstrap is loaded
+        if (typeof bootstrap !== 'undefined') {
+            var carousel = new bootstrap.Carousel(document.getElementById('healthProgramsCarousel'), {
+                interval: 5000, // Change slide every 5 seconds
+                wrap: true,
+                keyboard: true
+            });
+        }
+
+        // Alternative: find any element that might be creating space above header
+        const bodyChildren = document.body.children;
+        for (let i = 0; i < bodyChildren.length; i++) {
+            const child = bodyChildren[i];
+            if (child.tagName !== 'HEADER' && child.offsetTop === 0) {
+                child.style.marginTop = '0';
+                child.style.paddingTop = '0';
+            }
+        }
+    });
+</script>
+{% endblock %}

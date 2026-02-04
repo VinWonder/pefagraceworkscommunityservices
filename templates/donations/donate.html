@@ -1,0 +1,350 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Make a Donation - {{ site_name }}{% endblock %}
+
+{% block content %}
+<!-- Your Image Section -->
+<section class="py-4 mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Your image goes here -->
+                <div class="text-center">
+                    <img src="{% static 'images/education.jpg' %}"
+                         alt="Support Our Cause"
+                         class="img-fluid rounded shadow-sm"
+                         style="max-height: 500px; width: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Donation Section -->
+<section class="py-5" id="donationSection">
+    <div class="container">
+        <div class="row">
+            <!-- Left Column: Donation Options -->
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="card border-0 shadow-sm" style="position: sticky; top: 100px;">
+                    <div class="card-body p-4">
+                        <!-- "GIVE" Image -->
+                        <div class="text-center mb-4">
+                            <img src="{% static 'images/give.png' %}" alt="Give" class="img-fluid mb-3" style="max-height: 80px;">
+                        </div>
+
+
+                        <!-- Security & Trust Badges -->
+                        <div class="text-center mt-4 pt-3 border-top">
+                            <div class="d-flex justify-content-center gap-3 mb-3">
+                                <i class="fas fa-shield-alt fa-2x text-success"></i>
+                                <i class="fas fa-lock fa-2x text-primary"></i>
+                            </div>
+                            <p class="small text-muted mb-0">
+                                100% Secure Donation
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: PayPal Donation Form -->
+            <div class="col-lg-8">
+                <div class="card border-0 shadow">
+                    <div class="card-body p-4 p-md-5">
+                        <h2 class="mb-4 text-center">Support Our Cause</h2>
+                        <p class="text-center mb-4">Make a donation today and help us make a difference. Your contribution matters.</p>
+
+                        <!-- Simple PayPal Donation Form -->
+                        <form action="https://www.paypal.com/donate/?hosted_button_id=UFD7M52LH5XJE" method="post" target="_blank" id="paypalDonationForm">
+                            <input type="hidden" name="business" value="vinwonder05@gmail.com">
+                            <input type="hidden" name="currency_code" value="USD">
+                            <input type="hidden" name="item_name" value="Donation to {{ site_name }}">
+
+                            <!-- Simple Amount Input -->
+
+                            <!-- Simple Donation Type Selection -->
+                            <div class="mb-4 text-center">
+                                <h5 class="mb-3">Donation Type</h5>
+                                <div class="row g-3 justify-content-center">
+                                    <div class="col-md-5">
+                                        <div class="form-check card border p-3 h-100">
+                                            <input class="form-check-input"
+                                                   type="radio"
+                                                   name="donation_type"
+                                                   id="one_time"
+                                                   value="one_time"
+                                                   checked>
+                                            <label class="form-check-label" for="one_time">
+                                                <i class="fas fa-gift fa-2x text-primary mb-2"></i>
+                                                <div class="fw-bold">One-Time</div>
+                                                <small class="text-muted">Single donation</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-check card border p-3 h-100">
+                                            <input class="form-check-input"
+                                                   type="radio"
+                                                   name="donation_type"
+                                                   id="monthly"
+                                                   value="monthly">
+                                            <label class="form-check-label" for="monthly">
+                                                <i class="fas fa-calendar-alt fa-2x text-success mb-2"></i>
+                                                <div class="fw-bold">Monthly</div>
+                                                <small class="text-muted">Recurring</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Simple Terms Agreement -->
+                            <div class="mb-4 text-center">
+                                <div class="form-check d-inline-block">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="terms"
+                                           required>
+                                    <label class="form-check-label" for="terms">
+                                        I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- PayPal Donate Button -->
+                            <div class="d-grid mt-5">
+                                <button type="submit" class="btn btn-success btn-lg py-3">
+                                    <i class="fab fa-paypal me-2"></i>
+                                    <strong>DONATE NOW</strong>
+                                </button>
+                                <p class="text-center mt-2 small text-muted">
+                                    Secure payment via PayPal
+                                </p>
+                            </div>
+                        </form>
+
+                        <!-- Alternative Payment Methods -->
+                        <div class="mt-5 pt-4 border-top">
+                            <p class="text-center mb-3">Other ways to support:</p>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="card border h-100 text-center">
+                                        <div class="card-body">
+                                            <i class="fas fa-mobile-alt fa-2x text-success mb-2"></i>
+                                            <h6 class="fw-bold">M-Pesa</h6>
+                                            <p class="small mb-1">Paybill: 123456</p>
+                                            <p class="small">Account: DONATION</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card border h-100 text-center">
+                                        <div class="card-body">
+                                            <i class="fas fa-university fa-2x text-primary mb-2"></i>
+                                            <h6 class="fw-bold">Bank Transfer</h6>
+                                            <p class="small mb-1">Bank: Example Bank</p>
+                                            <p class="small">Acc: 1234567890</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card border h-100 text-center">
+                                        <div class="card-body">
+                                            <i class="fas fa-qrcode fa-2x text-secondary mb-2"></i>
+                                            <h6 class="fw-bold">QR Code</h6>
+                                            <p class="small">Scan to donate</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Terms Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Terms and Conditions</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Donation Policy</h6>
+                <p>All donations made to {{ site_name }} are final and non-refundable. Your donation will be used to support our various community programs and initiatives.</p>
+
+                <h6>Privacy Policy</h6>
+                <p>We respect your privacy. Your personal information will be kept confidential and will not be shared with third parties without your consent, except as required by law.</p>
+
+                <h6>Tax Deductibility</h6>
+                <p>Donations to {{ site_name }} are tax-deductible. You will receive an official receipt for your donation for tax purposes.</p>
+
+                <h6>Use of Funds</h6>
+                <p>We commit to using 100% of your donation for our programs and services. Administrative costs are covered separately.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Make the base.html header sticky */
+header.navbar,
+header:first-of-type:not(.sticky-header),
+nav.navbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1030 !important;
+    background-color: white !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+}
+
+/* Add some top margin to account for sticky header */
+body {
+    padding-top: 0;
+}
+
+/* Add padding to first section */
+.py-4.mt-4 {
+    margin-top: 1rem !important;
+}
+
+/* Donation amount button styling */
+.donation-amount.active {
+    background-color: var(--bs-primary);
+    color: white;
+    border-color: var(--bs-primary);
+}
+
+/* PayPal button styling */
+.btn-success {
+    background-color: #0070ba;
+    border-color: #0070ba;
+}
+
+.btn-success:hover {
+    background-color: #005ea6;
+    border-color: #005ea6;
+}
+
+/* Image styling */
+.img-fluid.rounded {
+    border-radius: 10px !important;
+}
+
+@media (max-width: 991.98px) {
+    /* Adjust for mobile */
+    .py-4.mt-4 {
+        margin-top: 0.5rem !important;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Try to make the main header sticky
+    const mainHeader = document.querySelector('header.navbar') ||
+                       document.querySelector('nav.navbar') ||
+                       document.querySelector('header:first-of-type');
+
+    if (mainHeader) {
+        mainHeader.style.position = 'sticky';
+        mainHeader.style.top = '0';
+        mainHeader.style.zIndex = '1030';
+        mainHeader.style.backgroundColor = 'white';
+        mainHeader.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+    }
+
+    // Set donation amount from quick buttons
+    const amountButtons = document.querySelectorAll('.donation-amount');
+    const amountInput = document.getElementById('amount');
+    const paypalAmountInput = document.getElementById('paypal_amount');
+
+    amountButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const amount = this.getAttribute('data-amount');
+
+            if (amount === 'other') {
+                amountInput.value = '';
+                amountInput.focus();
+            } else {
+                amountInput.value = amount;
+                paypalAmountInput.value = amount;
+            }
+
+            // Update button states
+            amountButtons.forEach(btn => {
+                btn.classList.remove('btn-primary', 'active');
+                btn.classList.add('btn-outline-primary');
+            });
+
+            this.classList.remove('btn-outline-primary');
+            this.classList.add('btn-primary', 'active');
+        });
+    });
+
+    // Update PayPal amount when input changes
+    amountInput.addEventListener('input', function() {
+        paypalAmountInput.value = this.value;
+    });
+
+    // Form validation
+    const form = document.getElementById('paypalDonationForm');
+    form.addEventListener('submit', function(e) {
+        const terms = document.getElementById('terms');
+        if (!terms.checked) {
+            e.preventDefault();
+            alert('Please agree to the Terms and Conditions');
+            return false;
+        }
+
+        const amount = parseFloat(amountInput.value);
+        if (amount < 50) {
+            e.preventDefault();
+            alert('Minimum donation amount is KES 50');
+            amountInput.focus();
+            return false;
+        }
+
+        // Convert KES to USD for PayPal (using approximate exchange rate)
+        const usdAmount = (amount / 150).toFixed(2);
+        paypalAmountInput.value = usdAmount;
+
+        // Show loading state
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Redirecting to PayPal...';
+        submitBtn.disabled = true;
+    });
+
+    // Auto-scroll to donation section when CTA button is clicked
+    const ctaButton = document.querySelector('a[href="#donationSection"]');
+    if (ctaButton) {
+        ctaButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector('#donationSection');
+            if (target) {
+                const headerHeight = mainHeader ? mainHeader.offsetHeight : 0;
+                window.scrollTo({
+                    top: target.offsetTop - headerHeight - 20,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+});
+</script>
+{% endblock %}

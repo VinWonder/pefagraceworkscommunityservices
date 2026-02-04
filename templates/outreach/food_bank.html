@@ -1,0 +1,363 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Food Bank - {{ site_name }}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8">
+                <h1 class="hero-title">{{ site_name }} Food Bank</h1>
+                <p class="hero-subtitle">Nourishing communities, one family at a time</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Food Bank Introduction -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <h2 class="section-title mb-4">Fighting Hunger in Our Community</h2>
+                <p>
+                    The {{ site_name }} Food Bank is committed to ensuring that no family in our community
+                    goes hungry. We provide nutritious food packages, emergency food assistance,
+                    and sustainable food solutions to those in need.
+                </p>
+                <p>
+                    Our food bank operates on the principles of dignity, compassion, and sustainability.
+                    We not only provide immediate relief but also work towards long-term food security
+                    through education and community empowerment.
+                </p>
+                <div class="row mt-4">
+                    <div class="col-6">
+                        <div class="text-center p-3 bg-light rounded">
+                            <div class="display-6 text-primary">500+</div>
+                            <div class="small">Families Served Monthly</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="text-center p-3 bg-light rounded">
+                            <div class="display-6 text-secondary">5,000+</div>
+                            <div class="small">Meals Distributed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="https://via.placeholder.com/600x400/27ae60/ffffff?text=Food+Bank"
+                     alt="Food Bank"
+                     class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Offered -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">Our Food Bank Services</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center"
+                                 style="width: 80px; height: 80px;">
+                                <i class="fas fa-shopping-basket fa-2x text-white"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 mb-3">Weekly Food Distribution</h4>
+                        <p class="small">
+                            Every Saturday from 9 AM - 12 PM, we distribute food packages containing
+                            staples like maize flour, beans, rice, cooking oil, and vegetables.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div class="bg-secondary rounded-circle d-inline-flex align-items-center justify-content-center"
+                                 style="width: 80px; height: 80px;">
+                                <i class="fas fa-ambulance fa-2x text-white"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 mb-3">Emergency Food Assistance</h4>
+                        <p class="small">
+                            For families facing immediate crisis situations, we provide emergency
+                            food assistance within 24 hours of request.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center"
+                                 style="width: 80px; height: 80px;">
+                                <i class="fas fa-seedling fa-2x text-white"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 mb-3">Nutrition Education</h4>
+                        <p class="small">
+                            Monthly workshops on nutrition, meal planning, and budget-friendly
+                            healthy eating for families.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Distribution Schedule -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h2 class="section-title mb-4">Food Distribution Schedule</h2>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Day</th>
+                                        <th>Time</th>
+                                        <th>Service</th>
+                                        <th>Location</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Monday</td>
+                                        <td>9:00 AM - 12:00 PM</td>
+                                        <td>Registration & Assessment</td>
+                                        <td>Main Office</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Wednesday</td>
+                                        <td>2:00 PM - 4:00 PM</td>
+                                        <td>Emergency Distribution</td>
+                                        <td>Food Bank Center</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Saturday</td>
+                                        <td>9:00 AM - 12:00 PM</td>
+                                        <td>Weekly Food Distribution</td>
+                                        <td>Community Hall</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Last Saturday of Month</td>
+                                        <td>10:00 AM - 12:00 PM</td>
+                                        <td>Nutrition Workshop</td>
+                                        <td>Training Room</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="alert alert-info mt-3">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Note:</strong> First-time recipients need to bring: National ID,
+                            proof of residence, and income declaration (if employed).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How to Get Help -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <h2 class="section-title mb-4">Need Food Assistance?</h2>
+
+                <div class="accordion" id="helpAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#eligibility">
+                                Who is eligible?
+                            </button>
+                        </h2>
+                        <div id="eligibility" class="accordion-collapse collapse show" data-bs-parent="#helpAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>Families with children under 18 years</li>
+                                    <li>Senior citizens (65+ years)</li>
+                                    <li>Persons with disabilities</li>
+                                    <li>Unemployed heads of households</li>
+                                    <li>Families affected by emergencies</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#documents">
+                                Required Documents
+                            </button>
+                        </h2>
+                        <div id="documents" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>Original National ID</li>
+                                    <li>Copy of birth certificates for children</li>
+                                    <li>Proof of residence (utility bill, rental agreement)</li>
+                                    <li>Income declaration (if employed)</li>
+                                    <li>Medical reports (for disability cases)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#process">
+                                Application Process
+                            </button>
+                        </h2>
+                        <div id="process" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                            <div class="accordion-body">
+                                <ol>
+                                    <li>Visit our office during registration hours</li>
+                                    <li>Complete the application form</li>
+                                    <li>Submit required documents</li>
+                                    <li>Attend a brief interview</li>
+                                    <li>Receive approval and distribution schedule</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h2 class="section-title mb-4">Contact Food Bank</h2>
+
+                        <div class="mb-4">
+                            <h5 class="h6">
+                                <i class="fas fa-clock text-primary me-2"></i>
+                                Office Hours
+                            </h5>
+                            <p class="mb-0">Monday - Friday: 8:00 AM - 5:00 PM</p>
+                            <p>Saturday: 9:00 AM - 1:00 PM</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="h6">
+                                <i class="fas fa-phone text-secondary me-2"></i>
+                                Contact Numbers
+                            </h5>
+                            <p class="mb-1">Food Bank Hotline: 0728 565 413</p>
+                            <p class="mb-0">Emergency Line: 0712 345 678</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="h6">
+                                <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                Location
+                            </h5>
+                            <p class="mb-0">{{ site_name }} Community Center</p>
+                            <p class="mb-0">Next to PEFA Church</p>
+                            <p>Off Nairobi-Nakuru Highway</p>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Emergency Food Requests:</strong> Call our emergency line for
+                            immediate assistance outside office hours.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Support Food Bank -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="mb-3">Support Our Food Bank</h2>
+                <p class="mb-0">
+                    Your donation helps us provide food for families in need. Consider making
+                    a food donation or financial contribution today.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{% url 'donations:donate' %}" class="btn btn-light btn-lg me-3">
+                    <i class="fas fa-donate me-2"></i>Donate Funds
+                </a>
+                <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-shopping-cart me-2"></i>Donate Food Items
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Most Needed Items -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">Most Needed Food Items</h2>
+        <div class="row">
+            <div class="col-md-3 col-6 mb-4">
+                <div class="text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-wheat-alt fa-3x text-primary"></i>
+                    </div>
+                    <h6>Maize Flour</h6>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-seedling fa-3x text-secondary"></i>
+                    </div>
+                    <h6>Beans & Lentils</h6>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-oil-can fa-3x text-primary"></i>
+                    </div>
+                    <h6>Cooking Oil</h6>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-mortar-pestle fa-3x text-secondary"></i>
+                    </div>
+                    <h6>Rice & Pasta</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <p class="lead">
+                <i class="fas fa-heart text-danger me-2"></i>
+                Non-perishable food items in original packaging are always welcome.
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

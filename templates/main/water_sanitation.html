@@ -1,0 +1,536 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Water & Sanitation - {{ site_name }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section - Reduced height and modified background -->
+<section class="vc_section vc_custom_1670773642248 vc_section-has-fill"
+         style="position: relative; background: url('{% static 'images/water1.png' %}');
+                background-size: cover; background-position: center; background-repeat: no-repeat; padding: 60px 0; margin: 0; min-height: 60vh;">
+    <div class="container" style="height: 100%;">
+        <div class="row align-items-center" style="height: 100%;">
+            <!-- Left column (empty for spacing) -->
+            <div class="col-md-6"></div>
+
+            <!-- Right column with content -->
+            <div class="col-md-6 vc_col-has-fill">
+                <div class="vc_column-inner" style="padding: 30px; background-color: rgba(0, 83, 156, 0.8); border-radius: 8px;">
+                    <h2 style="color: #ffffff; text-align: left; font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;"
+                        class="vc_custom_heading">
+                        Water and Sanitation
+                    </h2>
+
+                    <div class="wpb_single_image wpb_content_element vc_align_left">
+                        <figure class="wpb_wrapper vc_figure">
+                            <div class="vc_single_image-wrapper">
+                                <div style="width: 80px; height: 4px; background: #ffffff; margin: 0;"></div>
+                            </div>
+                        </figure>
+                    </div>
+
+                    <p style="color: #ffffff; font-size: 1.1rem; margin-top: 25px; line-height: 1.6;">
+                        Providing clean water and sanitation facilities to transform communities and save lives.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quote Section - More compact and combined -->
+<section class="py-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-3">
+                    <!-- Main quote -->
+                    <h3 class="mb-2" style="color: #00539c; font-size: 1.4rem; font-weight: 600; line-height: 1.3;">
+                        "Pure Clean water is the world's first and foremost medicine."
+                    </h3>
+
+                    <!-- Divider line -->
+                    <div style="width: 60px; height: 2px; background: #00539c; margin: 10px auto 15px;"></div>
+                </div>
+
+                <!-- Combined content -->
+                <div style="font-size: 0.95rem; line-height: 1.6; color: #333; text-align: center;">
+                    <p class="mb-3">
+                        Social justice is what faces you in the morning. It is awakening in a house with adequate water supply,
+                        cooking facilities and sanitation. It is the ability to nourish your children and send them to school
+                        where their education not only equips them for employment but reinforces their knowledge and
+                        understanding of their cultural inheritance.
+                    </p>
+
+                    <p style="font-weight: 500; color: #00539c;">
+                        We have had our 1st water Project in Ugenya Siaya and looking forward to creating more clean water spaces in the future.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Content Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <h2 class="section-title mb-4" style="color: #00539c; font-weight: 700;">Water, Sanitation & Hygiene</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                    After a natural disaster or pandemic, safe drinking water is a priority. Humans can live longer
+                    without food than water, so communication about clean water is essential to help avoid the risk
+                    of cholera, dysentery, malnutrition, famine, and death.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                    We have worked to reach 100 more families in Boro Nango Busia County as part of the continuation
+                    of WASH program of water filters distribution, because no matter who we are or where we come from,
+                    we're all entitled to the basic human rights of clean air to breathe, clean water to drink, and
+                    healthy land to call home.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    In 2021, we had 1000 households in Ribera & Ugenya Siaya County with clean water filtration system
+                    installed in the comfort of their homes.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <div style="width: 100%; height: 400px; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <img src="{% static 'images/water1.png' %}"
+                         alt="Clean Water Project"
+                         class="img-fluid"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Water Filters Slideshow Section - Only slideshow remains -->
+<section class="py-5" style="background: #f8f9fa;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div id="waterFiltersCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <!-- Indicators -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#waterFiltersCarousel" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#waterFiltersCarousel" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#waterFiltersCarousel" data-bs-slide-to="2"></button>
+                        <button type="button" data-bs-target="#waterFiltersCarousel" data-bs-slide-to="3"></button>
+                    </div>
+
+                    <!-- Slides -->
+                    <div class="carousel-inner rounded" style="border-radius: 10px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <!-- Slide 1 - SPOILTS & Ceramic Filters -->
+                        <div class="carousel-item active">
+                            <div class="row align-items-center g-0" style="background: linear-gradient(to right, #ffffff 50%, #f0f8ff 50%);">
+                                <div class="col-md-6 p-4 p-lg-5">
+                                    <div class="mb-3">
+                                        <span style="background: #00539c; color: white; padding: 8px 20px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
+                                            SPOILTS
+                                        </span>
+                                    </div>
+                                    <h3 class="mb-3" style="color: #00539c; font-weight: 700; font-size: 1.8rem;">
+                                        Ceramic Filters
+                                    </h3>
+                                    <div class="mb-3">
+                                        <span style="background: #e74c3c; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; margin-right: 10px;">
+                                            SPLITS
+                                        </span>
+                                        <span style="background: #27ae60; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem;">
+                                            PURIFING
+                                        </span>
+                                    </div>
+                                    <p style="color: #333; line-height: 1.7;">
+                                        Effective water purification technology using ceramic filters to provide clean, safe drinking water to communities.
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div style="height: 400px; overflow: hidden;">
+                                        <img src="{% static 'images/ceramic.jpg' %}"
+                                             class="d-block w-100 h-100"
+                                             alt="Ceramic Water Filters"
+                                             style="object-fit: cover;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 - SPLITS & Multiple Systems -->
+                        <div class="carousel-item">
+                            <div class="row align-items-center g-0" style="background: linear-gradient(to right, #f0f8ff 50%, #ffffff 50%);">
+                                <div class="col-md-6 order-md-2 p-4 p-lg-5">
+                                    <div class="mb-3">
+                                        <span style="background: #00539c; color: white; padding: 8px 20px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
+                                            SPLITS
+                                        </span>
+                                    </div>
+                                    <h3 class="mb-3" style="color: #00539c; font-weight: 700; font-size: 1.8rem;">
+                                        Multiple Systems
+                                    </h3>
+                                    <div class="mb-3">
+                                        <span style="background: #e74c3c; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; margin-right: 10px;">
+                                            PURIFING
+                                        </span>
+                                        <span style="background: #27ae60; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem;">
+                                            TRAINING
+                                        </span>
+                                    </div>
+                                    <p style="color: #333; line-height: 1.7;">
+                                        Various purification methods and systems tailored to different community needs and water sources.
+                                    </p>
+                                </div>
+                                <div class="col-md-6 order-md-1">
+                                    <div style="height: 400px; overflow: hidden;">
+                                        <img src="{% static 'images/multiple.jpg' %}"
+                                             class="d-block w-100 h-100"
+                                             alt="Multiple Water Systems"
+                                             style="object-fit: cover;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 - PURIFING & Purification -->
+                        <div class="carousel-item">
+                            <div class="row align-items-center g-0" style="background: linear-gradient(to right, #ffffff 50%, #f0f8ff 50%);">
+                                <div class="col-md-6 p-4 p-lg-5">
+                                    <div class="mb-3">
+                                        <span style="background: #00539c; color: white; padding: 8px 20px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
+                                            PURIFING
+                                        </span>
+                                    </div>
+                                    <h3 class="mb-3" style="color: #00539c; font-weight: 700; font-size: 1.8rem;">
+                                        Purification
+                                    </h3>
+                                    <div class="mb-3">
+                                        <span style="background: #e74c3c; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; margin-right: 10px;">
+                                            CLEAN
+                                        </span>
+                                        <span style="background: #27ae60; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem;">
+                                            PROCESSING
+                                        </span>
+                                    </div>
+                                    <p style="color: #333; line-height: 1.7;">
+                                        Clean water processing systems that transform contaminated water into safe, drinkable water for entire communities.
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div style="height: 400px; overflow: hidden;">
+                                        <img src="{% static 'images/i5.jpg' %}"
+                                             class="d-block w-100 h-100"
+                                             alt="Water Purification"
+                                             style="object-fit: cover;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 - TRAINING & Education -->
+                        <div class="carousel-item">
+                            <div class="row align-items-center g-0" style="background: linear-gradient(to right, #f0f8ff 50%, #ffffff 50%);">
+                                <div class="col-md-6 order-md-2 p-4 p-lg-5">
+                                    <div class="mb-3">
+                                        <span style="background: #00539c; color: white; padding: 8px 20px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
+                                            TRAINING
+                                        </span>
+                                    </div>
+                                    <h3 class="mb-3" style="color: #00539c; font-weight: 700; font-size: 1.8rem;">
+                                        Education
+                                    </h3>
+                                    <div class="mb-3">
+                                        <span style="background: #e74c3c; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; margin-right: 10px;">
+                                            COMMUNITY
+                                        </span>
+                                        <span style="background: #27ae60; color: white; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem;">
+                                            PROGRAMS
+                                        </span>
+                                    </div>
+                                    <p style="color: #333; line-height: 1.7;">
+                                        Community training programs on water safety, filter maintenance, and hygiene practices for sustainable water solutions.
+                                    </p>
+                                </div>
+                                <div class="col-md-6 order-md-1">
+                                    <div style="height: 400px; overflow: hidden;">
+                                        <img src="{% static 'images/education1.jpg' %}"
+                                             class="d-block w-100 h-100"
+                                             alt="Community Training"
+                                             style="object-fit: cover;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#waterFiltersCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#waterFiltersCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Social Impact Programs - Reduced size -->
+<section class="py-4" style="background: #00539c; color: white;">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h2 class="mb-3" style="color: white; font-size: 1.8rem; font-weight: 600;">Our Social Impact Programs</h2>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <!-- First Row: 2 programs -->
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <div class="text-center p-3 h-100" style="background: rgba(255, 255, 255, 0.1); border-radius: 6px;">
+                            <div class="mb-2">
+                                <i class="fas fa-hands-helping fa-2x" style="color: white;"></i>
+                            </div>
+                            <h4 class="mb-0" style="color: white; font-size: 1.2rem; font-weight: 500;">Faith and Outreach</h4>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="text-center p-3 h-100" style="background: rgba(255, 255, 255, 0.1); border-radius: 6px;">
+                            <div class="mb-2">
+                                <i class="fas fa-tint fa-2x" style="color: white;"></i>
+                            </div>
+                            <h4 class="mb-0" style="color: white; font-size: 1.2rem; font-weight: 500;">Water and Sanitation</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second Row: 2 programs -->
+                <div class="row">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <div class="text-center p-3 h-100" style="background: rgba(255, 255, 255, 0.1); border-radius: 6px;">
+                            <div class="mb-2">
+                                <i class="fas fa-heartbeat fa-2x" style="color: white;"></i>
+                            </div>
+                            <h4 class="mb-0" style="color: white; font-size: 1.2rem; font-weight: 500;">Health Services</h4>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="text-center p-3 h-100" style="background: rgba(255, 255, 255, 0.1); border-radius: 6px;">
+                            <div class="mb-2">
+                                <i class="fas fa-graduation-cap fa-2x" style="color: white;"></i>
+                            </div>
+                            <h4 class="mb-0" style="color: white; font-size: 1.2rem; font-weight: 500;">Education Support</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5" style="background: #00539c; color: white;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="mb-3" style="color: white;">Support Our Water Projects</h2>
+                <p class="mb-0" style="font-size: 1.1rem;">
+                    Help us bring clean water and sanitation to more communities in need.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{% url 'donations:donate' %}" class="btn btn-light btn-lg" style="background: white; color: #00539c; font-weight: 600;">
+                    <i class="fas fa-tint me-2"></i>Donate Now
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Add custom styles for slideshow -->
+<style>
+    /* Carousel customization */
+    .carousel-indicators button {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: rgba(0, 83, 156, 0.5);
+        border: none;
+        margin: 0 5px;
+    }
+
+    .carousel-indicators button.active {
+        background-color: #00539c;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(0, 83, 156, 0.8);
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0 20px;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .carousel-inner .row {
+            flex-direction: column;
+        }
+
+        .carousel-inner .col-md-6 {
+            width: 100%;
+        }
+
+        .carousel-inner .col-md-6:last-child {
+            order: -1;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            display: none;
+        }
+    }
+</style>
+
+<!-- Add custom styles -->
+<style>
+    /* Reset body margin and padding to ensure header sticks to top */
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Target the specific header element in your base.html */
+    header.navbar,
+    header .navbar,
+    .site-header,
+    .main-header,
+    header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        z-index: 1030 !important;
+        background-color: white !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+        margin: 0 !important;
+        padding: 0.5rem 0 !important;
+    }
+
+    /* Add padding to the first section to account for fixed header */
+    .vc_section.vc_custom_1670773642248 {
+        padding-top: 100px !important;
+        min-height: calc(60vh - 100px) !important;
+        margin-top: 0 !important;
+    }
+
+    /* Remove any top margin from body or html */
+    html {
+        scroll-padding-top: 70px; /* Adjust based on your header height */
+    }
+
+    .section-title {
+        color: #00539c;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+    }
+
+    .section-title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background-color: #00539c;
+    }
+
+    .step-number span {
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .display-4 {
+        font-size: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .vc_custom_heading {
+            font-size: 2rem !important;
+        }
+
+        .vc_section.vc_custom_1670773642248 {
+            padding-top: 80px !important;
+            min-height: calc(50vh - 80px) !important;
+        }
+
+        .display-4 {
+            font-size: 1.8rem;
+        }
+
+        .vc_column-inner {
+            padding: 20px !important;
+        }
+
+        header {
+            padding: 0.3rem 0 !important;
+        }
+    }
+</style>
+
+<!-- Add this JavaScript to ensure header stays on top -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Force header to top
+        const header = document.querySelector('header');
+        if (header) {
+            header.style.position = 'fixed';
+            header.style.top = '0';
+            header.style.left = '0';
+            header.style.right = '0';
+            header.style.width = '100%';
+            header.style.zIndex = '1030';
+            header.style.backgroundColor = 'white';
+            header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            header.style.margin = '0';
+
+            // Add body padding to account for fixed header
+            const headerHeight = header.offsetHeight;
+            document.body.style.paddingTop = headerHeight + 'px';
+        }
+
+        // Initialize carousel if Bootstrap is loaded
+        if (typeof bootstrap !== 'undefined') {
+            var carousel = new bootstrap.Carousel(document.getElementById('waterFiltersCarousel'), {
+                interval: 5000, // Change slide every 5 seconds
+                wrap: true,
+                keyboard: true
+            });
+        }
+
+        // Alternative: find any element that might be creating space above header
+        const bodyChildren = document.body.children;
+        for (let i = 0; i < bodyChildren.length; i++) {
+            const child = bodyChildren[i];
+            if (child.tagName !== 'HEADER' && child.offsetTop === 0) {
+                child.style.marginTop = '0';
+                child.style.paddingTop = '0';
+            }
+        }
+    });
+</script>
+{% endblock %}

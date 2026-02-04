@@ -1,0 +1,1235 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - PEFA GRACEWORKS{% endblock %}
+
+{% block content %}
+<!-- Sticky Header Fix -->
+<style>
+/* Make the header sticky */
+header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1030 !important;
+    background: white !important;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Adjust spacing to account for sticky header */
+.hero-slider-section {
+    margin-top: 0 !important;
+}
+
+/* Add padding to body content to prevent header overlap */
+body {
+    padding-top: 80px;
+}
+
+/* Hero Slider Styles */
+.hero-slider-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-item {
+    transition: transform 0.6s ease-in-out;
+}
+
+.carousel-fade .carousel-item {
+    opacity: 0;
+    transition-property: opacity;
+    transform: none;
+}
+
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-item-prev.carousel-item-right {
+    opacity: 1;
+}
+
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-right {
+    opacity: 0;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.3s;
+    margin: 0 20px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.7);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 25px;
+    height: 25px;
+    filter: brightness(1.5);
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    bottom: 30px;
+    margin: 0;
+}
+
+.carousel-indicators button {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    margin: 0 8px;
+    transition: all 0.3s;
+}
+
+.carousel-indicators button.active {
+    background: #e74c3c;
+    border-color: #ffffff;
+    transform: scale(1.3);
+    box-shadow: 0 0 15px rgba(231, 76, 60, 0.8);
+}
+
+/* Text Box Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.carousel-item.active .text-box-container {
+    animation: fadeInUp 0.8s ease;
+}
+
+/* Hover Effects */
+.hover-card:hover,
+.impact-item:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Vision & Mission Cards Hover */
+.vision-card:hover, .mission-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Button hover effects */
+.btn-danger {
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
+}
+
+.btn-outline-primary {
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    transform: translateY(-2px);
+    background: #3498db;
+    color: white !important;
+    box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+    .slide-background {
+        height: 600px !important;
+    }
+
+    h1.display-4 {
+        font-size: 2.8rem !important;
+    }
+
+    .lead {
+        font-size: 1.2rem !important;
+    }
+
+    .text-box {
+        padding: 30px !important;
+    }
+
+    .btn-lg {
+        padding: 12px 25px !important;
+        font-size: 1.1rem !important;
+    }
+
+    .impact-image {
+        height: 180px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide-background {
+        height: 500px !important;
+    }
+
+    h1.display-4 {
+        font-size: 2.2rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .lead {
+        font-size: 1.1rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .text-box {
+        padding: 20px !important;
+        width: 90% !important;
+        margin: 0 auto;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+        margin: 0 10px;
+    }
+
+    .carousel-indicators {
+        bottom: 20px;
+    }
+
+    .carousel-indicators button {
+        width: 10px;
+        height: 10px;
+        margin: 0 6px;
+    }
+
+    .text-center.mt-4 .btn {
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+    }
+
+    .text-center.mt-4 .me-3 {
+        margin-right: 0 !important;
+    }
+
+    .vision-card, .mission-card {
+        margin-bottom: 20px;
+    }
+
+    .impact-image {
+        height: 160px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .slide-background {
+        height: 450px !important;
+    }
+
+    h1.display-4 {
+        font-size: 1.8rem !important;
+    }
+
+    .lead {
+        font-size: 1rem !important;
+    }
+
+    .text-box {
+        padding: 15px !important;
+        border-radius: 15px !important;
+    }
+
+    .btn-lg {
+        font-size: 1rem !important;
+        padding: 10px 20px !important;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        display: none;
+    }
+
+    body {
+        padding-top: 70px;
+    }
+
+    .impact-image {
+        height: 140px !important;
+    }
+
+    .h1.fw-bold {
+        font-size: 1.8rem !important;
+    }
+}
+</style>
+
+<!-- Hero Slider Section -->
+<section class="hero-slider-section">
+    <div id="donationCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#donationCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#donationCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#donationCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <!-- Slides -->
+        <div class="carousel-inner">
+            <!-- Slide 1 - Using galleryasw15.jpg -->
+            <div class="carousel-item active">
+                <div class="slide-background" style="
+                    background-image: url('{% static "images/galleryasw15.jpg" %}');
+                    background-size: cover;
+                    background-position: center;
+                    height: 700px;
+                    position: relative;
+                ">
+                    <!-- Text Box with your original text -->
+                    <div class="text-box-container" style="
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 80%;
+                        max-width: 900px;
+                        z-index: 10;
+                    ">
+                        <div class="text-box" style="
+                            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
+                            border-radius: 20px;
+                            padding: 40px;
+                            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3),
+                                        0 0 100px rgba(255, 255, 255, 0.3),
+                                        inset 0 0 20px rgba(255, 255, 255, 0.5);
+                            border: 3px solid rgba(255, 255, 255, 0.8);
+                            backdrop-filter: blur(5px);
+                        ">
+                            <h1 class="display-4 fw-bold mb-4 text-center" style="
+                                color: #2c3e50;
+                                letter-spacing: 0.5px;
+                                font-size: 3.5rem;
+                                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+                                line-height: 1.2;
+                            ">Bringing Hope to Vulnerable Children</h1>
+                            <p class="lead mb-4 text-center" style="
+                                font-size: 1.4rem;
+                                color: #34495e;
+                                font-weight: 500;
+                                line-height: 1.6;
+                                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+                                max-width: 800px;
+                                margin: 0 auto;
+                            ">
+                                Every donation brings a smile to a child's face. Join us in providing
+                                essential support to children in need across East Africa.
+                            </p>
+                            <div class="text-center mt-4">
+                                <a href="/donations/" class="btn btn-danger btn-lg me-3" style="
+                                    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+                                    font-weight: 600;
+                                    letter-spacing: 0.5px;
+                                    border: none;
+                                    background: linear-gradient(135deg, #e74c3c, #c0392b);
+                                    padding: 15px 35px;
+                                    border-radius: 50px;
+                                    font-size: 1.2rem;
+                                ">
+                                    <i class="fas fa-hand-holding-heart me-2"></i>Donate Now
+                                </a>
+                                <a href="/work/" class="btn btn-outline-primary btn-lg" style="
+                                    font-weight: 600;
+                                    letter-spacing: 0.5px;
+                                    border: 2px solid #3498db;
+                                    padding: 15px 35px;
+                                    border-radius: 50px;
+                                    font-size: 1.2rem;
+                                    color: #2c3e50;
+                                ">
+                                    <i class="fas fa-child me-2"></i>Sponsor a Child
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Semi-transparent overlay for better text readability -->
+                    <div class="slide-overlay" style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: rgba(0, 0, 0, 0.3);
+                    "></div>
+                </div>
+            </div>
+
+            <!-- Slide 2 - Using pic 2.jpg -->
+            <div class="carousel-item">
+                <div class="slide-background" style="
+                    background-image: url('{% static "images/pic%202.jpg" %}');
+                    background-size: cover;
+                    background-position: center;
+                    height: 700px;
+                    position: relative;
+                ">
+                    <!-- Text Box with your original text -->
+                    <div class="text-box-container" style="
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 80%;
+                        max-width: 900px;
+                        z-index: 10;
+                    ">
+                        <div class="text-box" style="
+                            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
+                            border-radius: 20px;
+                            padding: 40px;
+                            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3),
+                                        0 0 100px rgba(255, 255, 255, 0.3),
+                                        inset 0 0 20px rgba(255, 255, 255, 0.5);
+                            border: 3px solid rgba(255, 255, 255, 0.8);
+                            backdrop-filter: blur(5px);
+                        ">
+                            <h1 class="display-4 fw-bold mb-4 text-center" style="
+                                color: #2c3e50;
+                                letter-spacing: 0.5px;
+                                font-size: 3.5rem;
+                                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+                                line-height: 1.2;
+                            ">Transforming Lives Through Education</h1>
+                            <p class="lead mb-4 text-center" style="
+                                font-size: 1.4rem;
+                                color: #34495e;
+                                font-weight: 500;
+                                line-height: 1.6;
+                                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+                                max-width: 800px;
+                                margin: 0 auto;
+                            ">
+                                Your support provides school supplies, uniforms, and educational
+                                resources to children who need it most. Education is the key to breaking the cycle of poverty.
+                            </p>
+                            <div class="text-center mt-4">
+                                <a href="/donations/" class="btn btn-danger btn-lg me-3" style="
+                                    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+                                    font-weight: 600;
+                                    letter-spacing: 0.5px;
+                                    border: none;
+                                    background: linear-gradient(135deg, #e74c3c, #c0392b);
+                                    padding: 15px 35px;
+                                    border-radius: 50px;
+                                    font-size: 1.2rem;
+                                ">
+                                    <i class="fas fa-graduation-cap me-2"></i>Support Education
+                                </a>
+                                <a href="/work/" class="btn btn-outline-primary btn-lg" style="
+                                    font-weight: 600;
+                                    letter-spacing: 0.5px;
+                                    border: 2px solid #3498db;
+                                    padding: 15px 35px;
+                                    border-radius: 50px;
+                                    font-size: 1.2rem;
+                                    color: #2c3e50;
+                                ">
+                                    <i class="fas fa-book-open me-2"></i>Learn More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Semi-transparent overlay for better text readability -->
+                    <div class="slide-overlay" style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: rgba(0, 0, 0, 0.3);
+                    "></div>
+                </div>
+            </div>
+
+            <!-- Slide 3 - Using pic 3.jpg -->
+            <div class="carousel-item">
+                <div class="slide-background" style="
+                    background-image: url('{% static "images/pic%203.jpg" %}');
+                    background-size: cover;
+                    background-position: center;
+                    height: 700px;
+                    position: relative;
+                ">
+                    <!-- Text Box with your original text -->
+                    <div class="text-box-container" style="
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 80%;
+                        max-width: 900px;
+                        z-index: 10;
+                    ">
+                        <div class="text-box" style="
+                            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
+                            border-radius: 20px;
+                            padding: 40px;
+                            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3),
+                                        0 0 100px rgba(255, 255, 255, 0.3),
+                                        inset 0 0 20px rgba(255, 255, 255, 0.5);
+                            border: 3px solid rgba(255, 255, 255, 0.8);
+                            backdrop-filter: blur(5px);
+                        ">
+                            <h1 class="display-4 fw-bold mb-4 text-center" style="
+                                color: #2c3e50;
+                                letter-spacing: 0.5px;
+                                font-size: 3.5rem;
+                                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+                                line-height: 1.2;
+                            ">Providing Nutrition & Healthcare</h1>
+                            <p class="lead mb-4 text-center" style="
+                                font-size: 1.4rem;
+                                color: #34495e;
+                                font-weight: 500;
+                                line-height: 1.6;
+                                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+                                max-width: 800px;
+                                margin: 0 auto;
+                            ">
+                                Together we can ensure no child goes to bed hungry. Your donations
+                                provide nutritious meals and healthcare services to vulnerable children.
+                            </p>
+                            <div class="text-center mt-4">
+                                <a href="/donations/" class="btn btn-danger btn-lg me-3" style="
+                                    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+                                    font-weight: 600;
+                                    letter-spacing: 0.5px;
+                                    border: none;
+                                    background: linear-gradient(135deg, #e74c3c, #c0392b);
+                                    padding: 15px 35px;
+                                    border-radius: 50px;
+                                    font-size: 1.2rem;
+                                ">
+                                    <i class="fas fa-apple-alt me-2"></i>Provide Food
+                                </a>
+                                <a href="/work/" class="btn btn-outline-primary btn-lg" style="
+                                    font-weight: 600;
+                                    letter-spacing: 0.5px;
+                                    border: 2px solid #3498db;
+                                    padding: 15px 35px;
+                                    border-radius: 50px;
+                                    font-size: 1.2rem;
+                                    color: #2c3e50;
+                                ">
+                                    <i class="fas fa-heartbeat me-2"></i>Health Programs
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Semi-transparent overlay for better text readability -->
+                    <div class="slide-overlay" style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: rgba(0, 0, 0, 0.3);
+                    "></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#donationCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#donationCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+
+<!-- Compact Vision & Mission Section -->
+<section class="py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+    <div class="container">
+        <div class="row">
+            <!-- Left Column - Vision -->
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="vision-card" style="
+                    background: white;
+                    border-radius: 15px;
+                    padding: 25px;
+                    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+                    border-left: 4px solid #3498db;
+                    position: relative;
+                    overflow: hidden;
+                    height: 100%;
+                ">
+                    <!-- Decorative element -->
+                    <div style="
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 70px;
+                        height: 70px;
+                        background: linear-gradient(135deg, #3498db22 0%, #2980b922 100%);
+                        border-radius: 0 15px 0 70px;
+                    "></div>
+
+                    <div style="position: relative; z-index: 2;">
+                        <div class="d-flex align-items-center mb-3">
+                            <div style="
+                                width: 40px;
+                                height: 40px;
+                                background: linear-gradient(135deg, #3498db, #2980b9);
+                                border-radius: 10px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin-right: 12px;
+                                flex-shrink: 0;
+                            ">
+                                <i class="fas fa-eye text-white"></i>
+                            </div>
+                            <div>
+                                <h2 class="h3 fw-bold mb-0" style="color: #2c3e50;">Our Vision</h2>
+                                <div style="
+                                    width: 50px;
+                                    height: 3px;
+                                    background: linear-gradient(90deg, #3498db, #2980b9);
+                                    margin-top: 8px;
+                                    border-radius: 2px;
+                                "></div>
+                            </div>
+                        </div>
+
+                        <p class="mb-0" style="
+                            font-size: 1.05rem;
+                            color: #34495e;
+                            line-height: 1.6;
+                            font-weight: 500;
+                        ">
+                            Thriving holistic communities where every individual experiences God's love through comprehensive support and empowerment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Mission -->
+            <div class="col-lg-6">
+                <div class="mission-card" style="
+                    background: white;
+                    border-radius: 15px;
+                    padding: 25px;
+                    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+                    border-left: 4px solid #e74c3c;
+                    position: relative;
+                    overflow: hidden;
+                    height: 100%;
+                ">
+                    <!-- Decorative element -->
+                    <div style="
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 70px;
+                        height: 70px;
+                        background: linear-gradient(135deg, #e74c3c22 0%, #c0392b22 100%);
+                        border-radius: 0 15px 0 70px;
+                    "></div>
+
+                    <div style="position: relative; z-index: 2;">
+                        <div class="d-flex align-items-center mb-3">
+                            <div style="
+                                width: 40px;
+                                height: 40px;
+                                background: linear-gradient(135deg, #e74c3c, #c0392b);
+                                border-radius: 10px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin-right: 12px;
+                                flex-shrink: 0;
+                            ">
+                                <i class="fas fa-bullseye text-white"></i>
+                            </div>
+                            <div>
+                                <h2 class="h3 fw-bold mb-0" style="color: #2c3e50;">Our Mission</h2>
+                                <div style="
+                                    width: 50px;
+                                    height: 3px;
+                                    background: linear-gradient(90deg, #e74c3c, #c0392b);
+                                    margin-top: 8px;
+                                    border-radius: 2px;
+                                "></div>
+                            </div>
+                        </div>
+
+                        <p class="mb-0" style="
+                            font-size: 1.05rem;
+                            color: #34495e;
+                            line-height: 1.6;
+                            font-weight: 500;
+                        ">
+                            To nurture a holistic community, empowered in the Word, sound in health, and enabled with diverse opportunities for growth and development.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Focus Areas -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-3" style="color: #2c3e50;">Our Core Focus Areas</h2>
+            <p class="lead" style="color: #7f8c8d;">Transforming lives through comprehensive, faith-based initiatives</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm hover-card" style="
+                    transition: all 0.3s ease;
+                    border-top: 4px solid #3498db;
+                ">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div style="
+                                width: 70px;
+                                height: 70px;
+                                background: linear-gradient(135deg, #3498db, #2980b9);
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin: 0 auto;
+                            ">
+                                <i class="fas fa-hands-praying fa-2x text-white"></i>
+                            </div>
+                        </div>
+                        <h4 class="card-title mb-3" style="color: #2c3e50;">Faith & Outreach</h4>
+                        <p class="card-text" style="color: #7f8c8d;">Missionary work and outreach services in hospitals, prison settings, and among vulnerable populations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm hover-card" style="
+                    transition: all 0.3s ease;
+                    border-top: 4px solid #e74c3c;
+                ">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div style="
+                                width: 70px;
+                                height: 70px;
+                                background: linear-gradient(135deg, #e74c3c, #c0392b);
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin: 0 auto;
+                            ">
+                                <i class="fas fa-heartbeat fa-2x text-white"></i>
+                            </div>
+                        </div>
+                        <h4 class="card-title mb-3" style="color: #2c3e50;">Health Services</h4>
+                        <p class="card-text" style="color: #7f8c8d;">Community wellness centres focused on promotive, preventive, and curative health services.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm hover-card" style="
+                    transition: all 0.3s ease;
+                    border-top: 4px solid #2ecc71;
+                ">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div style="
+                                width: 70px;
+                                height: 70px;
+                                background: linear-gradient(135deg, #2ecc71, #27ae60);
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin: 0 auto;
+                            ">
+                                <i class="fas fa-tint fa-2x text-white"></i>
+                            </div>
+                        </div>
+                        <h4 class="card-title mb-3" style="color: #2c3e50;">Water & Sanitation</h4>
+                        <p class="card-text" style="color: #7f8c8d;">Increasing community access to clean water through boreholes and purification facilities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm hover-card" style="
+                    transition: all 0.3s ease;
+                    border-top: 4px solid #f39c12;
+                ">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <div style="
+                                width: 70px;
+                                height: 70px;
+                                background: linear-gradient(135deg, #f39c12, #d35400);
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin: 0 auto;
+                            ">
+                                <i class="fas fa-graduation-cap fa-2x text-white"></i>
+                            </div>
+                        </div>
+                        <h4 class="card-title mb-3" style="color: #2c3e50;">Education Support</h4>
+                        <p class="card-text" style="color: #7f8c8d;">Providing bursaries and basic amenities to needy students, especially adolescent girls.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Social Impact Section -->
+<section class="py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h1 fw-bold mb-3" style="color: #2c3e50;">Our Social Impact</h2>
+            <p class="lead" style="color: #7f8c8d; max-width: 800px; margin: 0 auto;">
+                Through our comprehensive programs, we're making a tangible difference in communities across East Africa.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Faith & Outreach Impact -->
+            <div class="col-lg-4">
+                <div class="impact-item" style="
+                    background: white;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+                    transition: all 0.3s ease;
+                    height: 100%;
+                ">
+                    <div class="impact-image" style="
+                        height: 200px;
+                        background: linear-gradient(rgba(52, 152, 219, 0.1), rgba(52, 152, 219, 0.3)),
+                                      url('{% static "images/img.png" %}');
+                        background-size: cover;
+                        background-position: center;
+                        position: relative;
+                    ">
+                        <div style="
+                            position: absolute;
+                            top: 15px;
+                            left: 15px;
+                            background: linear-gradient(135deg, #3498db, #2980b9);
+                            color: white;
+                            padding: 6px 15px;
+                            border-radius: 20px;
+                            font-weight: 600;
+                            font-size: 0.85rem;
+                        ">
+                            <i class="fas fa-hands-praying me-1"></i>Faith & Outreach
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="h5 fw-bold mb-2" style="color: #2c3e50;">Spiritual Empowerment</h3>
+                        <p style="color: #7f8c8d; line-height: 1.5; margin-bottom: 15px; font-size: 0.95rem;">
+                            Our missionary work reaches vulnerable populations in hospitals, prisons, and remote communities,
+                            providing spiritual guidance and emotional support.
+                        </p>
+                        <div class="impact-stats" style="
+                            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+                            padding: 12px;
+                            border-radius: 10px;
+                            border-left: 3px solid #3498db;
+                        ">
+                            <p class="mb-0 small" style="color: #2c3e50; font-weight: 500;">
+                                <i class="fas fa-users me-1 text-primary"></i>
+                                <strong>500+</strong> individuals receive spiritual counseling monthly
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Services Impact -->
+            <div class="col-lg-4">
+                <div class="impact-item" style="
+                    background: white;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+                    transition: all 0.3s ease;
+                    height: 100%;
+                ">
+                    <div class="impact-image" style="
+                        height: 200px;
+                        background: linear-gradient(rgba(231, 76, 60, 0.1), rgba(231, 76, 60, 0.3)),
+                                      url('{% static "images/img_1.png" %}');
+                        background-size: cover;
+                        background-position: center;
+                        position: relative;
+                    ">
+                        <div style="
+                            position: absolute;
+                            top: 15px;
+                            left: 15px;
+                            background: linear-gradient(135deg, #e74c3c, #c0392b);
+                            color: white;
+                            padding: 6px 15px;
+                            border-radius: 20px;
+                            font-weight: 600;
+                            font-size: 0.85rem;
+                        ">
+                            <i class="fas fa-heartbeat me-1"></i>Health Services
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="h5 fw-bold mb-2" style="color: #2c3e50;">Community Wellness</h3>
+                        <p style="color: #7f8c8d; line-height: 1.5; margin-bottom: 15px; font-size: 0.95rem;">
+                            We operate community wellness centres providing promotive, preventive, and curative health services
+                            to underserved populations.
+                        </p>
+                        <div class="impact-stats" style="
+                            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+                            padding: 12px;
+                            border-radius: 10px;
+                            border-left: 3px solid #e74c3c;
+                        ">
+                            <p class="mb-0 small" style="color: #2c3e50; font-weight: 500;">
+                                <i class="fas fa-hospital me-1 text-danger"></i>
+                                <strong>10+</strong> community wellness centres established
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Water & Sanitation Impact -->
+            <div class="col-lg-4">
+                <div class="impact-item" style="
+                    background: white;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+                    transition: all 0.3s ease;
+                    height: 100%;
+                ">
+                    <div class="impact-image" style="
+                        height: 200px;
+                        background: linear-gradient(rgba(46, 204, 113, 0.1), rgba(46, 204, 113, 0.3)),
+                                      url('{% static "images/img_2.png" %}');
+                        background-size: cover;
+                        background-position: center;
+                        position: relative;
+                    ">
+                        <div style="
+                            position: absolute;
+                            top: 15px;
+                            left: 15px;
+                            background: linear-gradient(135deg, #2ecc71, #27ae60);
+                            color: white;
+                            padding: 6px 15px;
+                            border-radius: 20px;
+                            font-weight: 600;
+                            font-size: 0.85rem;
+                        ">
+                            <i class="fas fa-tint me-1"></i>Water & Sanitation
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="h5 fw-bold mb-2" style="color: #2c3e50;">Clean Water Access</h3>
+                        <p style="color: #7f8c8d; line-height: 1.5; margin-bottom: 15px; font-size: 0.95rem;">
+                            We've reached 100+ more families through our water and sanitation projects,
+                            increasing community access to clean water through boreholes and purification facilities.
+                        </p>
+                        <div class="impact-stats" style="
+                            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+                            padding: 12px;
+                            border-radius: 10px;
+                            border-left: 3px solid #2ecc71;
+                        ">
+                            <p class="mb-0 small" style="color: #2c3e50; font-weight: 500;">
+                                <i class="fas fa-hand-holding-water me-1 text-success"></i>
+                                <strong>100+</strong> families provided with clean water access
+                            </p>
+                        </div>
+                        <div class="mt-2" style="
+                            background: linear-gradient(135deg, #2ecc7122, #27ae6022);
+                            padding: 8px 12px;
+                            border-radius: 8px;
+                            border-left: 2px solid #27ae60;
+                        ">
+                            <p class="mb-0 small" style="color: #34495e; font-style: italic;">
+                                <i class="fas fa-handshake me-1"></i>
+                                Partnership with Government of Kenya, World Vision and partners
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Volunteer Call to Action -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="volunteer-cta" style="
+                    background: white;
+                    border-radius: 12px;
+                    padding: 25px 30px;
+                    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+                    border: 1px solid #e0e0e0;
+                    position: relative;
+                    overflow: hidden;
+                ">
+                    <!-- Decorative top border -->
+                    <div style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        height: 4px;
+                        background: linear-gradient(90deg, #3498db, #2980b9);
+                        border-radius: 12px 12px 0 0;
+                    "></div>
+
+                    <!-- Main content -->
+                    <div style="position: relative; z-index: 2;">
+                        <!-- Header -->
+                        <h3 class="fw-bold mb-3 text-center" style="
+                            color: #2c3e50;
+                            font-size: 1.5rem;
+                            letter-spacing: 0.5px;
+                        ">
+                            Volunteer Your Skills
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-center mb-4" style="
+                            color: #34495e;
+                            font-size: 1rem;
+                            line-height: 1.5;
+                        ">
+                            PEFA GRACEWORKS is looking to work with passionate individuals with knowledge of:
+                        </p>
+
+                        <!-- Skills List -->
+                        <div class="mb-4" style="
+                            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+                            border-radius: 8px;
+                            padding: 15px 20px;
+                            border-left: 3px solid #3498db;
+                        ">
+                            <ul class="mb-0" style="
+                                list-style: none;
+                                padding-left: 0;
+                            ">
+                                <li class="mb-2" style="
+                                    color: #2c3e50;
+                                    font-weight: 500;
+                                    font-size: 0.95rem;
+                                    display: flex;
+                                    align-items: flex-start;
+                                ">
+                                    <span style="
+                                        color: #3498db;
+                                        margin-right: 10px;
+                                        font-weight: bold;
+                                        font-size: 1.2rem;
+                                        line-height: 1;
+                                    ">•</span>
+                                    <span>Non-profit operations</span>
+                                </li>
+                                <li class="mb-2" style="
+                                    color: #2c3e50;
+                                    font-weight: 500;
+                                    font-size: 0.95rem;
+                                    display: flex;
+                                    align-items: flex-start;
+                                ">
+                                    <span style="
+                                        color: #3498db;
+                                        margin-right: 10px;
+                                        font-weight: bold;
+                                        font-size: 1.2rem;
+                                        line-height: 1;
+                                    ">•</span>
+                                    <span>Strategy</span>
+                                </li>
+                                <li style="
+                                    color: #2c3e50;
+                                    font-weight: 500;
+                                    font-size: 0.95rem;
+                                    display: flex;
+                                    align-items: flex-start;
+                                ">
+                                    <span style="
+                                        color: #3498db;
+                                        margin-right: 10px;
+                                        font-weight: bold;
+                                        font-size: 1.2rem;
+                                        line-height: 1;
+                                    ">•</span>
+                                    <span>Fundraising</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Call to Action -->
+                        <div class="text-center">
+                            <p class="mb-3" style="
+                                color: #34495e;
+                                font-size: 0.95rem;
+                                font-style: italic;
+                            ">
+                                Help us make an impact.
+                            </p>
+                            <a href="{% url 'contact' %}" class="btn btn-primary px-4 py-2" style="
+                                background: linear-gradient(135deg, #3498db, #2980b9);
+                                border: none;
+                                border-radius: 25px;
+                                font-weight: 600;
+                                letter-spacing: 0.5px;
+                                box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+                                transition: all 0.3s ease;
+                            ">
+                                <i class="fas fa-hand-paper me-2"></i>Apply Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the carousel
+    const donationCarousel = document.getElementById('donationCarousel');
+    if (donationCarousel) {
+        const carousel = new bootstrap.Carousel(donationCarousel, {
+            interval: 6000,
+            wrap: true,
+            pause: 'hover',
+            keyboard: true,
+            touch: true,
+            ride: true
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                carousel.prev();
+            } else if (e.key === 'ArrowRight') {
+                carousel.next();
+            }
+        });
+
+        // Auto-play
+        carousel.cycle();
+
+        // Touch swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        donationCarousel.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        donationCarousel.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+
+            if (touchEndX < touchStartX - swipeThreshold) {
+                carousel.next();
+            }
+
+            if (touchEndX > touchStartX + swipeThreshold) {
+                carousel.prev();
+            }
+        }
+
+        // Add click effect to indicators
+        const indicators = document.querySelectorAll('.carousel-indicators button');
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', function() {
+                indicators.forEach(ind => ind.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    }
+
+    // Add hover effects to vision and mission cards
+    const visionCard = document.querySelector('.vision-card');
+    const missionCard = document.querySelector('.mission-card');
+
+    if (visionCard) {
+        visionCard.style.transition = 'all 0.3s ease';
+    }
+
+    if (missionCard) {
+        missionCard.style.transition = 'all 0.3s ease';
+    }
+
+    // Add hover effects to impact items
+    const impactItems = document.querySelectorAll('.impact-item');
+    impactItems.forEach(item => {
+        item.style.transition = 'all 0.3s ease';
+    });
+
+    // Make header sticky on scroll
+    const header = document.querySelector('header');
+    if (header) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.15) !important';
+                header.style.padding = '10px 0 !important';
+            } else {
+                header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1) !important';
+                header.style.padding = '15px 0 !important';
+            }
+        });
+    }
+});
+</script>
+{% endblock %}

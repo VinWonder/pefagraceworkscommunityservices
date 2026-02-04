@@ -1,0 +1,515 @@
+<!-- templates/main/contact.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - {{ site_name }}{% endblock %}
+
+{% block content %}
+<!-- Simple Header -->
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="display-5 fw-bold mb-3" style="color: #1a5276;">Contact Us</h1>
+            <p class="lead" style="color: #7f8c8d;">Get in touch with {{ site_name }}</p>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Information & Form -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Information -->
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h2 class="mb-4" style="color: #1a5276; font-weight: 700;">Get in Touch</h2>
+                <p>We'd love to hear from you. Reach out to us through any of the following channels:</p>
+
+                <div class="contact-info mt-4">
+                    <div class="d-flex mb-4">
+                        <div class="me-3">
+                            <div style="background-color: #1a5276; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="h6 mb-1">Our Address</h5>
+                            <p class="mb-0">PEFA Church Nyamasaria<br>
+                               Kisumu-Kakamega Road<br>
+                               Nyamasaria, Kisumu County<br>
+                               Kenya</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mb-4">
+                        <div class="me-3">
+                            <div style="background-color: #3498db; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="h6 mb-1">Phone Numbers</h5>
+                            <p class="mb-0">Main Office: 0728 565 413<br>
+                               Support Line: 0712 345 678<br>
+                               Emergency: 0733 987 654</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mb-4">
+                        <div class="me-3">
+                            <div style="background-color: #1a5276; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="h6 mb-1">Email Addresses</h5>
+                            <p class="mb-0">General: info@pefagraceworks.org<br>
+                               Support: support@pefagraceworks.org<br>
+                               Donations: donate@pefagraceworks.org</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <div style="background-color: #3498db; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-clock text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="h6 mb-1">Office Hours</h5>
+                            <p class="mb-0">Monday - Friday: 8:00 AM - 5:00 PM<br>
+                               Saturday: 9:00 AM - 1:00 PM<br>
+                               Sunday: Worship Services Only</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="mt-5">
+                    <h5 class="h6 mb-3">Follow Us</h5>
+                    <div class="d-flex gap-3">
+                        <a href="https://facebook.com/pefagraceworks" target="_blank" class="btn btn-outline-primary btn-sm">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/pefagraceworks" target="_blank" class="btn btn-outline-primary btn-sm">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://instagram.com/pefagraceworks" target="_blank" class="btn btn-outline-primary btn-sm">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://youtube.com/pefagraceworks" target="_blank" class="btn btn-outline-primary btn-sm">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://wa.me/254728565413" target="_blank" class="btn btn-outline-success btn-sm">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4 p-md-5">
+                        <h2 class="mb-4" style="color: #1a5276; font-weight: 700;">Send us a Message</h2>
+                        <p class="text-muted mb-4">Fill out the form below and we'll get back to you as soon as possible.</p>
+
+                        {% if messages %}
+                        <div class="messages mb-4">
+                            {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        <form method="post" action="{% url 'contact' %}">
+                            {% csrf_token %}
+
+                            {% if form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {% for error in form.non_field_errors %}
+                                {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="id_name" class="form-label">Full Name *</label>
+                                    <input type="text"
+                                           class="form-control {% if form.name.errors %}is-invalid{% endif %}"
+                                           id="id_name"
+                                           name="name"
+                                           value="{% if form.name.value %}{{ form.name.value }}{% endif %}"
+                                           placeholder="Your full name"
+                                           required>
+                                    {% if form.name.errors %}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.name.errors %}
+                                        {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="id_email" class="form-label">Email Address *</label>
+                                    <input type="email"
+                                           class="form-control {% if form.email.errors %}is-invalid{% endif %}"
+                                           id="id_email"
+                                           name="email"
+                                           value="{% if form.email.value %}{{ form.email.value }}{% endif %}"
+                                           placeholder="your.email@example.com"
+                                           required>
+                                    {% if form.email.errors %}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.email.errors %}
+                                        {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="id_phone" class="form-label">Phone Number (Optional)</label>
+                                    <input type="text"
+                                           class="form-control {% if form.phone.errors %}is-invalid{% endif %}"
+                                           id="id_phone"
+                                           name="phone"
+                                           value="{% if form.phone.value %}{{ form.phone.value }}{% endif %}"
+                                           placeholder="Phone number">
+                                    {% if form.phone.errors %}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.phone.errors %}
+                                        {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="id_subject" class="form-label">Subject *</label>
+                                    <input type="text"
+                                           class="form-control {% if form.subject.errors %}is-invalid{% endif %}"
+                                           id="id_subject"
+                                           name="subject"
+                                           value="{% if form.subject.value %}{{ form.subject.value }}{% endif %}"
+                                           placeholder="Message subject"
+                                           required>
+                                    {% if form.subject.errors %}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.subject.errors %}
+                                        {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="id_message" class="form-label">Message *</label>
+                                <textarea class="form-control {% if form.message.errors %}is-invalid{% endif %}"
+                                          id="id_message"
+                                          name="message"
+                                          rows="5"
+                                          placeholder="Your message..."
+                                          required>{% if form.message.value %}{{ form.message.value }}{% endif %}</textarea>
+                                {% if form.message.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.message.errors %}
+                                    {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                                    <label class="form-check-label" for="newsletter">
+                                        I'd like to receive updates and newsletters about {{ site_name }}
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5" style="color: #1a5276; font-weight: 700;">Find Us at PEFA Nyamasaria, Kisumu</h2>
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-0">
+                        <!-- Google Map -->
+                        <div class="ratio ratio-16x9">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.736176096696!2d34.78129047500809!3d-0.09202883560521728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182aa5d6e0a5a6d7%3A0xbdf5b5c5c5c5c5c5!2sPEFA%20Church%20Nyamasaria%2C%20Kisumu-Kakamega%20Road%2C%20Nyamasaria%2C%20Kisumu%2C%20Kenya!5e0!3m2!1sen!2ske!4v1641234567890!5m2!1sen!2ske"
+                                width="100%"
+                                height="450"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        <div class="p-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="mb-3"><i class="fas fa-map-marker-alt text-primary me-2"></i>Location Details</h5>
+                                    <p class="mb-2"><strong>Church Name:</strong> PEFA Church Nyamasaria</p>
+                                    <p class="mb-2"><strong>Road:</strong> Kisumu-Kakamega Road</p>
+                                    <p class="mb-2"><strong>Area:</strong> Nyamasaria</p>
+                                    <p class="mb-2"><strong>City:</strong> Kisumu</p>
+                                    <p class="mb-0"><strong>County:</strong> Kisumu County, Kenya</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="mb-3"><i class="fas fa-directions text-primary me-2"></i>Directions</h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="fas fa-car me-2 text-secondary"></i>From Kisumu CBD: Take Kisumu-Kakamega Road towards Kakamega</li>
+                                        <li class="mb-2"><i class="fas fa-car me-2 text-secondary"></i>Drive approximately 5km from town center</li>
+                                        <li class="mb-2"><i class="fas fa-car me-2 text-secondary"></i>Look for PEFA Church signage on your left</li>
+                                        <li class="mb-0"><i class="fas fa-bus me-2 text-secondary"></i>Matatus: Take any matatu heading to Kakamega via Nyamasaria</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Church Services Section -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5" style="color: #1a5276; font-weight: 700;">Worship Services at PEFA Nyamasaria</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center p-4">
+                                <div class="mb-3">
+                                    <i class="fas fa-church fa-3x" style="color: #1a5276;"></i>
+                                </div>
+                                <h4 class="card-title">Sunday Services</h4>
+                                <div class="mt-3">
+                                    <p class="mb-1"><strong>Early Service:</strong> 7:30 AM - 9:00 AM</p>
+                                    <p class="mb-1"><strong>Main Service:</strong> 10:00 AM - 12:30 PM</p>
+                                    <p class="mb-1"><strong>Youth Service:</strong> 2:00 PM - 4:00 PM</p>
+                                    <p class="mb-0"><strong>Evening Service:</strong> 5:00 PM - 7:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center p-4">
+                                <div class="mb-3">
+                                    <i class="fas fa-users fa-3x" style="color: #3498db;"></i>
+                                </div>
+                                <h4 class="card-title">Weekday Services</h4>
+                                <div class="mt-3">
+                                    <p class="mb-1"><strong>Tuesday:</strong> Prayer Meeting - 5:30 PM</p>
+                                    <p class="mb-1"><strong>Wednesday:</strong> Bible Study - 5:30 PM</p>
+                                    <p class="mb-1"><strong>Thursday:</strong> Women's Fellowship - 3:00 PM</p>
+                                    <p class="mb-1"><strong>Friday:</strong> Youth Fellowship - 5:30 PM</p>
+                                    <p class="mb-0"><strong>Saturday:</strong> Choir Practice - 9:00 AM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5" style="color: #1a5276; font-weight: 700;">Frequently Asked Questions</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                How can I get to PEFA Nyamasaria from Kisumu town?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                From Kisumu town center, take the Kisumu-Kakamega Road heading towards Kakamega.
+                                PEFA Nyamasaria is located approximately 5km from the town center on your left side.
+                                You can use any matatu heading to Kakamega via Nyamasaria.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                What time are your Sunday services?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                We have multiple Sunday services to accommodate everyone:
+                                <ul class="mt-2 mb-0">
+                                    <li>Early Service: 7:30 AM - 9:00 AM</li>
+                                    <li>Main Service: 10:00 AM - 12:30 PM</li>
+                                    <li>Youth Service: 2:00 PM - 4:00 PM</li>
+                                    <li>Evening Service: 5:00 PM - 7:00 PM</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                Do you have parking available?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes, we have ample parking space within the church compound. Our parking is secure
+                                and monitored during all church services and events.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                How can I join a ministry or volunteer?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                We welcome new members to our various ministries! You can:
+                                <ul class="mt-2 mb-0">
+                                    <li>Speak to any ministry leader after service</li>
+                                    <li>Visit our church office during working hours</li>
+                                    <li>Fill out the contact form above indicating your area of interest</li>
+                                    <li>Join our New Members Class held every first Sunday of the month</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                Do you offer counseling services?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes, we offer spiritual counseling and guidance. Our trained counselors are available:
+                                <ul class="mt-2 mb-0">
+                                    <li>Tuesday & Thursday: 9:00 AM - 12:00 PM (by appointment)</li>
+                                    <li>After Sunday services for brief consultations</li>
+                                    <li>For emergencies, call our support line: 0712 345 678</li>
+                                </ul>
+                                All counseling services are confidential and free of charge.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Form styling */
+    .form-label {
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 8px;
+    }
+
+    .form-control {
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        padding: 12px 15px;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #1a5276;
+        box-shadow: 0 0 0 0.25rem rgba(26, 82, 118, 0.25);
+    }
+
+    .btn-primary {
+        background-color: #1a5276;
+        border-color: #1a5276;
+        padding: 12px 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #154360;
+        border-color: #154360;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(26, 82, 118, 0.2);
+    }
+
+    /* Accordion styling */
+    .accordion-button:not(.collapsed) {
+        background-color: rgba(26, 82, 118, 0.1);
+        color: #1a5276;
+        border-color: #1a5276;
+    }
+
+    .accordion-button:focus {
+        box-shadow: 0 0 0 0.25rem rgba(26, 82, 118, 0.25);
+        border-color: #1a5276;
+    }
+
+    /* Card styling */
+    .card {
+        border: none;
+        border-radius: 10px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .container.py-5 {
+            padding-top: 2rem !important;
+            padding-bottom: 2rem !important;
+        }
+
+        .display-5 {
+            font-size: 2rem !important;
+        }
+
+        .lead {
+            font-size: 1.1rem !important;
+        }
+    }
+</style>
+{% endblock %}
+
