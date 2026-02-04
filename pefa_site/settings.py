@@ -87,10 +87,9 @@ WSGI_APPLICATION = 'pefa_site.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    "default": dj_database_url.config(
+        default=os.getenv("DATABASE_URL")
+    )
 }
 
 
@@ -132,6 +131,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Media files
 MEDIA_URL = '/media/'
@@ -154,4 +154,6 @@ COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
 if DEBUG:
     COMPRESS_ENABLED = False
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-secret-key")
+DEBUG = os.getenv("DEBUG", "False") == "True"
+
